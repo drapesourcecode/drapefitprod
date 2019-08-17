@@ -108,7 +108,7 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
             <div class="col-md-12">
                 <div class="conformation-message">                
                     <h3><i class="fa fa-check"></i> Horrayyyyyy.. Your order has been placed!</h3>
-                    <p>Please Keep an eye on your email on the progress we do for your Fit Box.</p>
+                    <!-- <p>Please Keep an eye on your email on the progress we do for your Fit Box.</p> -->
                     <p class="go-home"><a class="btn btn-primary btn-sm" href="<?php echo HTTP_ROOT .$curl ?>" role="button">Continue to homepage</a></p>
                 </div>              
             </div>

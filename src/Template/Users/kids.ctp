@@ -226,7 +226,7 @@
                                 <img src="<?= HTTP_ROOT . MAN ?>northface.png" alt="">
                             </div>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="small-images">
                                 <img src="<?= HTTP_ROOT . MAN ?>h&m.png" alt="">
                             </div>
@@ -250,7 +250,7 @@
                             <div class="small-images">
                                 <img src="<?= HTTP_ROOT . MAN ?>express.png" alt="">
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -376,7 +376,7 @@
                     }
                     if (response.status == 'success') {
 
-                        $('#email-error_women').attr('style', 'color:green;');
+                        $('#email-error_women').attr('style', 'color:green !important;');
                         $('#email-error_women').html(response.msg).show();
 
                     }
