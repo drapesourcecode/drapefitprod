@@ -67,10 +67,6 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                             <?php } ?>
                             <img src="<?= $this->Url->image('logo.png'); ?>" alt="drapfit logo">
                         </a>
-
-
-
-
                         </br>
                         <p>WE DO BEST FIT</p>
                 </div>
@@ -111,9 +107,7 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
             <div class="col-md-3">
                 <div class="footer-social">
                     <h3>Follow Us :</h3>
-                    <?php
-                    echo $this->cell('Chat::social_media');
-                    ?>
+                    <?php echo $this->cell('Chat::social_media');?>
                 </div>           
             </div>         
         </div>
