@@ -250,10 +250,7 @@
         top: -3px;
         color: red;
     }
-    .blue1 {
-        margin-bottom: -429px;
-        transition: 500ms all ease-in-out 0s;
-    }
+
     #message {
         height: 40vh;
     }
@@ -264,6 +261,17 @@
     }
     .for-height {
         /* height: 69vh !important;*/
+    }
+.live-chat .chat-box{
+        max-height: 600px;
+        transition: 500ms all ease-in-out 0s;
+    }
+    .live-chat.blue1 {
+        margin-bottom: 0;
+    }
+    .live-chat.blue1 .chat-box{
+        max-height: 0px;
+        transition: 500ms all ease-in-out 0s;
     }
     @media screen and (max-width: 1199px) {
     .live-chat .chat-box{
