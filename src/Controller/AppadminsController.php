@@ -2659,11 +2659,9 @@ $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $request->setTransactionRequest( $transactionRequestType);
     $controller = new AnetController\CreateTransactionController($request);
     
-    if($getName=='drapefittest'){
-         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-     }else if($getName=='drapefit'){
+  
          $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
-     }
+     
   
     
  ########################
