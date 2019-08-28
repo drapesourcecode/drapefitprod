@@ -124,7 +124,7 @@ class UsersController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['invite', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe']);
+        $this->Auth->allow(['autoMentions','boxUpdate','invite', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe']);
     }
 
     public function calendarSechedule() {
@@ -1351,6 +1351,7 @@ class UsersController extends AppController {
     }
 
     public function welcome($slug = null, $sections = null, $editid = null) {
+        
         $this->Users->hasOne('UserDetails', ['className' => 'UserDetails', 'foreignKey' => 'user_id']);
         $userDetails = $this->Users->find('all')->contain('UserDetails')->where(['Users.id' => $this->Auth->user('id')])->first();
 
@@ -2648,8 +2649,8 @@ class UsersController extends AppController {
 
     // Set the customer's identifying information
     $customerData = new AnetAPI\CustomerDataType();
-    $customerData->setType("individual");
-    $customerData->setId("99999456654");
+     $customerData->setType("individual");
+        $customerData->setId("99999456654");
     $customerData->setEmail($email);
     //$customerData->setEmail("EllenJohnson@example.com");
 
@@ -2688,13 +2689,8 @@ class UsersController extends AppController {
 
     // Create the controller and get the response
     $controller = new AnetController\CreateTransactionController($request);
-         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
-     
-    
-    
-
-
-        $msg = array();
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+    $msg = array();
 
         if ($response != null) {
 // Check to see if the API request was successfully received and acted upon
@@ -2767,6 +2763,7 @@ class UsersController extends AppController {
         $data['user_id'] = $this->Auth->user('id');
         $data['price'] = $data['payableAmount'];
         $data['profile_type'] = $profile_type;
+        $data['payment_type'] = 1;
         $data['status'] = 0;
         $data['payment_card_details_id'] = $data['payment_card_details_id'];
         $data['created_dt'] = date('Y-m-d H:i:s');
@@ -2781,13 +2778,11 @@ class UsersController extends AppController {
         $billingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $this->Auth->user('id'),'is_billing'=>1])->first();
         
         
-        
-
         $arr_user_info = [
             'card_number' => $data['card_number'],
             'exp_date' => $data['expiry_year'] . '-' . $data['expiry_month'],
             'card_code' => $data['cvv'],
-            'product' => 'Test Plugin',
+            'product' => 'Order',
             'first_name' => $billingAddress->full_name,
             'last_name' => $billingAddress->full_name,
             'address' => $billingAddress->address,
@@ -2804,38 +2799,13 @@ class UsersController extends AppController {
 
 
         $message = $this->authorizeCreditCard($arr_user_info);
+       
 
         if (@$message['error'] == 'error') {
             echo json_encode($message);
         } else if (@$message['status'] == '1') {
             $getId = $this->Auth->user('id');
-           // $count = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->count();
-
-
-
-
-//            if ($count >= 1) {
-//
-//                $getFriends = $this->Settings->find('all')->where(['Settings.name' => 'inviteFrinds'])->first();
-//                $walletsEn = $this->Wallets->newEntity();
-//                $walletsEn->user_id = $this->Auth->user('id');
-//                $walletsEn->type = 2;
-//                $walletsEn->balance = $getFriends->value;
-//                $walletsEn->created = date('Y-m-d h:i:s');
-//                $walletsEn->applay_status = 0;
-//
-//                if ($this->Wallets->save($walletsEn)) {
-//                    $getDetails = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->first();
-//                    $walletsEnRE = $this->Wallets->newEntity();
-//                    $walletsEnRE->user_id = $getDetails->user_id;
-//                    $walletsEnRE->type = 2;
-//                    $walletsEnRE->balance = $getFriends->value;
-//                    $walletsEnRE->created = date('Y-m-d h:i:s');
-//                    $walletsEn->applay_status = 0;
-//                    $this->Wallets->save($walletsEnRE);
-//                    $this->ReferFriends->updateAll(['paid_status' => 1], ['my_link_with_uniq_no' => $this->request->getCookie('refer_time')]);
-//                }
-//            }
+   
 
             echo json_encode($message);
             $this->paymentMailSending($message);
@@ -5988,5 +5958,158 @@ class UsersController extends AppController {
 
         exit;
     }
+    public function autoMentions() {
+        #####Testing mail#######
+        ############
+
+        $getingData = $this->LetsPlanYourFirstFix->find('all')->where(['try_new_items_with_scheduled_fixes' => 1]);
+        foreach ($getingData as $data) {
+            if ($data->how_often_would_you_lik_fixes == 1) {
+                $twoWeeks = strtotime($data->applay_dt . '+ 2 week');
+                $dateInTwoWeeks = date('Y-m-d :H:i:s');
+                if ($twoWeeks <= $dateInTwoWeeks) {
+
+                    $this->boxUpdate($planId);
+                }
+            } else if ($data->how_often_would_you_lik_fixes == 2) {
+                $oneMonth = strtotime($data->applay_dt . '+ 1 months');
+                $dateInTwoWeeks = date('Y-m-d :H:i:s');
+                if ($oneMonth <= $dateInTwoWeeks) {
+
+                    $this->boxUpdate($planId);
+                }
+            } else if ($data->how_often_would_you_lik_fixes == 3) {
+                $twoMonth = strtotime($data->applay_dt . '+ 2 months');
+                $dateInTwoWeeks = date('Y-m-d :H:i:s');
+                if ($twoMonth <= $dateInTwoWeeks) {
+
+                    $this->boxUpdate($planId);
+                }
+            }
+        }
+
+
+
+
+
+        exit;
+    }
+
+    public function boxUpdate($planId) {
+        if ($planId) {
+            $getingData = $this->LetsPlanYourFirstFix->find('all')->where(['id' => $planId])->first();
+            if (($getingData->user_id != '') && ($getingData->kid_id != '')) {
+                $profile_type = '3';
+            } else {
+                $getGender = $this->UserDetails->find('all')->where(['user_id' => $getingData->user_id])->first();
+                $getEmail= $this->Users->find('all')->where(['id' => $getingData->user_id])->first()->email;
+                if ($getGender->gender == 1) {
+                    $profile_type = '1';
+                } else {
+                    $profile_type = '2';
+                }
+            }
+
+
+            $cardDetails = $this->PaymentCardDetails->find('all')->where(['user_id' => $getingData->user_id, 'use_card' => 1])->first();
+            $paymentCount = $this->PaymentGetways->find('all')->where(['PaymentGetways.payment_type' => 1, 'PaymentGetways.status' => 1, 'PaymentGetways.profile_type' => $profile_type, 'PaymentGetways.kid_id' => $getingData->kid_id, 'user_id' => $getingData->user_id])->count();
+
+            $data['user_id'] = $getingData->user_id;
+            $data['kid_id'] = $getingData->kid_id;
+            $data['price'] = 20;
+            $data['profile_type'] = $profile_type;
+            $data['payment_type'] = 1;
+            $data['status'] = 0;
+            $data['payment_card_details_id'] = $cardDetails->id;
+            $data['created_dt'] = date('Y-m-d H:i:s');
+            $data['count'] = $paymentCount + 1;
+            $newEntity = $this->PaymentGetways->patchEntity($newEntity, $data);
+            //pj($data); exit;
+            $PaymentIdlast = $this->PaymentGetways->save($newEntity);
+            $paymentId = $PaymentIdlast->id;
+            $userData = $this->UserDetails->find('all')->where(['UserDetails.user_id' => $getingData->user_id])->first();
+            $exitdata = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $getingData->user_id])->first();
+            $billingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $getingData->user_id, 'is_billing' => 1])->first();
+
+            $arr_user_info = [
+                'card_number' => $cardDetails->card_number,
+                'exp_date' => $cardDetails->card_expire,
+                'card_code' => $cardDetails->cvv,
+                'product' => 'Test Plugin',
+                'first_name' => $billingAddress->full_name,
+                'last_name' => $billingAddress->full_name,
+                'address' => $billingAddress->address,
+                'city' => $billingAddress->city,
+                'state' => $billingAddress->state,
+                'zip' => $billingAddress->zipcode,
+                'country' => $billingAddress->country,
+                'email' => $getEmail->email,
+                'amount' => 20,
+                'invice' => $paymentId,
+                'refId' => $paymentId,
+                'companyName' => 'Drapefit',
+            ];
+
+            $message = $this->authorizeCreditCard($arr_user_info);
+            if (@$message['error'] == 'error') {
+               $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+              $this->Custom->sendEmail($toSupport, $from, $subject, $message);
+     
+            } else if (@$message['status'] == '1') {
+                $updateId = $paymentId;
+                $this->PaymentGetways->updateAll(['status' => 1, 'transactions_id ' => $message['TransId']], ['id' => $updateId]);
+                 $this->LetsPlanYourFirstFix->updateAll(['applay_dt' =>date('Y-m-d H:i:s')], ['id' => $planId]);
+                
+                $paymentDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId])->first();
+                $checkUser = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId, 'PaymentGetways.payment_type' => 1])->first();
+
+                if ($checkUser->payment_type == 1) {
+                    if ($getingData->kid_id != '') {
+                        @$kidId = $getingData->kid_id;
+                        $this->KidsDetails->updateAll(['is_redirect' => 2], ['id' => @$kidId]);
+                        $kid_id = $getingData->kid_id;
+                    } else {
+                        //echo "hi"; exit;
+                        $kid_id = 0;
+                        $this->Users->updateAll(['is_redirect' => 2], ['id' => $getingData->user_id]);
+                    }
+                }
+
+                if ($paymentDetails->profile_type == 1) {
+                    $emailMessageProfile = $this->Settings->find('all')->where(['Settings.name' => 'PAYMENT_COUNT_PROFILE'])->first();
+                } elseif ($paymentDetails->profile_type == 2) {
+                    $emailMessageProfile = $this->Settings->find('all')->where(['Settings.name' => 'PAYMENT_COUNT_PROFILE'])->first();
+                } elseif ($paymentDetails->profile_type == 3) {
+                    $emailMessageProfile = $this->Settings->find('all')->where(['Settings.name' => 'PAYMENT_COUNT_PROFILE_KID'])->first();
+                }
+                $paymentCount = $this->PaymentGetways->find('all')->where(['PaymentGetways.user_id' =>$getingData->user_id, 'PaymentGetways.status' => 1, 'PaymentGetways.profile_type' => $paymentDetails->profile_type, 'PaymentGetways.payment_type' => 1])->count();
+
+                $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'SUCCESS_PAYMENT'])->first();
+                $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
+                $to = $this->Auth->user('email');
+                $name = $this->Auth->user('name');
+                $from = $fromMail->value;
+                $subject = $emailMessage->display;
+                $sitename = SITE_NAME;
+                $usermessage = $message['Success'];
+                $email_message = $this->Custom->paymentEmail($emailMessage->value, $name, $usermessage, $sitename);
+                $this->Custom->sendEmail($to, $from, $subject, $email_message);
+                $subjectProfile = $emailMessageProfile->display;
+                $email_message_profile = $this->Custom->paymentEmailCount($emailMessageProfile->value, $name, $usermessage, $sitename, $paymentCount);
+
+
+                $this->Custom->sendEmail($to, $from, $subjectProfile, $email_message_profile);
+                $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+                $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
+                $this->Custom->sendEmail($toSupport, $from, $subjectProfile, $email_message_profile);
+            } else {
+             
+                $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+                $this->Custom->sendEmail($toSupport, $from, $subject, $message);
+                
+            }
+        }
+    }
+
 
 }
