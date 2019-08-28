@@ -6,6 +6,7 @@
         <?php echo $this->Html->meta('keywords', (empty($metaKeyword) ? '' : $metaKeyword)); ?>
         <?php echo $this->Html->meta('description', (empty($metaDescription) ? '' : $metaDescription)); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta name="google-site-verification" content="S9idszKLc5bdvepgrSzGlEMYn_HhskU14K7Zh_45ywM" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?= $this->Url->css('bootstrap.min.css'); ?>" type="text/css">
         <link rel="stylesheet" href="<?= $this->Url->css('style.css'); ?>" type="text/css">
@@ -16,13 +17,23 @@
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/style.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/design.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/responsive-accordion.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/kidbootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/kidstyle.css" type="text/css">
         <script src='<?= $this->Url->script('jquery.min.js'); ?>'></script>
         <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
         <script type="text/javascript" src="<?php echo HTTP_ROOT ?>assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo HTTP_ROOT ?>assets/js/moment-with-locales.js"></script>
         <script type="text/javascript" src="<?php echo HTTP_ROOT ?>assets/js/bootstrap-datetimepicker.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145376852-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-145376852-1');
+</script>
         <!--end of debasish add this link-->
     </head>
     <body>
