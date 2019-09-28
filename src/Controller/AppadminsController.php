@@ -10,7 +10,6 @@ use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
 
-//require_once(ROOT . '/vendor/' . DS . '/phpoffice/vendor/autoload.php');
 require_once(ROOT . '/vendor/' . DS . '/barcode/vendor/autoload.php');
 require_once(ROOT . '/vendor' . DS . 'PaymentTransactions' . DS . 'authorize-credit-card.php');
 
@@ -23,7 +22,6 @@ class AppadminsController extends AppController {
     public function initialize() {
         parent::initialize();
         $this->loadComponent('Custom');
-//$this->loadComponent('Phpoffice');
         $this->loadComponent('Flash');
         $this->loadModel('Users');
         $this->loadModel('Promocode');
@@ -40,13 +38,11 @@ class AppadminsController extends AppController {
         $this->loadModel('TypicallyWearMen');
         $this->loadModel('ShippingAddress');
         $this->loadModel('Settings');
-//women tables
         $this->loadModel('SizeChart');
         $this->loadModel('style_quizs');
         $this->loadModel('UserDetails');
         $this->loadModel('YourProportions');
         $this->loadModel('CustomerProductReview');
-
         $this->loadModel('FitCut');
         $this->loadModel('FlauntArms');
         $this->loadModel('WemenJeansLength');
@@ -107,11 +103,6 @@ class AppadminsController extends AppController {
         $this->loadModel('WomenShoePrefer');
         $this->loadModel('WemenStyleSphereSelections');
         $this->loadModel('PaymentGetways');
-
-
-//women tables
-
-
         $this->viewBuilder()->layout('admin');
     }
 
@@ -120,55 +111,34 @@ class AppadminsController extends AppController {
     }
 
     public function index($id = null) {
-
         $this->viewBuilder()->layout('admin');
-
-//        if (!empty(@$userid)) {
-//           
-//        }
-
         if ($this->Auth->user('type') == 3) {
             $empId = $this->request->session()->read('Auth.User.id');
             $paid_users = $this->PaymentGetways->find('all')->where(['PaymentGetways.status' => 1, 'PaymentGetways.emp_id' => $empId]);
-
-            $men_count = $this->PaymentGetways->find('all')->where(['profile_type' => 1, 'emp_id' => $empId,'status'=>1])->count();
-            $women_count = $this->PaymentGetways->find('all')->where(['profile_type' => 2, 'emp_id' => $empId,'status'=>1])->count();
-            $kid_count = $this->PaymentGetways->find('all')->where(['profile_type' => 3, 'emp_id' => $empId,'status'=>1])->count();
+            $men_count = $this->PaymentGetways->find('all')->where(['profile_type' => 1, 'emp_id' => $empId, 'status' => 1])->count();
+            $women_count = $this->PaymentGetways->find('all')->where(['profile_type' => 2, 'emp_id' => $empId, 'status' => 1])->count();
+            $kid_count = $this->PaymentGetways->find('all')->where(['profile_type' => 3, 'emp_id' => $empId, 'status' => 1])->count();
         } else {
             $paid_users = $this->PaymentGetways->find('all')->where(['PaymentGetways.status' => 1]);
             $userid = $paid_users->extract('user_id')->toArray();
-            /*
-              $men_count = $this->UserDetails->find('all')->where(['UserDetails.user_id IN' => $userid, 'UserDetails.gender' => 1])->count();
-              $women_count = $this->UserDetails->find('all')->where(['UserDetails.user_id IN ' => $userid, 'UserDetails.gender' => 2])->count();
-              $kid_count = $this->KidsDetails->find('all')->where(['KidsDetails.user_id IN' => $userid])->count();
-             */
-
-            $men_count = $this->PaymentGetways->find('all')->where(['profile_type' => 1,'status'=>1])->count();
-            $women_count = $this->PaymentGetways->find('all')->where(['profile_type' => 2,'status'=>1])->count();
-            $kid_count = $this->PaymentGetways->find('all')->where(['profile_type' => 3,'status'=>1])->count();
+            $men_count = $this->PaymentGetways->find('all')->where(['profile_type' => 1, 'status' => 1])->count();
+            $women_count = $this->PaymentGetways->find('all')->where(['profile_type' => 2, 'status' => 1])->count();
+            $kid_count = $this->PaymentGetways->find('all')->where(['profile_type' => 3, 'status' => 1])->count();
         }
-
-
-
-
-
         $this->set(compact('paid_users', 'men_count', 'women_count', 'kid_count'));
     }
 
     public function profile($param = null) {
         $user_id = $this->request->session()->read('Auth.User.id');
         $rowname = $this->Users->find('all')->where(['Users.id' => $user_id])->first();
-//        pj($rowname);exit;
         $getCurPassword = $this->Users->find('all', ['fields' => ['password']])->where(['Users.id' => $user_id])->first();
         $settingsEmailTempletes = $this->Settings->find('all')->where(['Settings.type' => 2])->group('Settings.id');
-
         $row = $this->Users->find('all')->where(['Users.id' => $user_id])->first();
         $type = $this->request->session()->read('Auth.User.type');
         $this->viewBuilder()->layout('admin');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->data;
-//            pj($data);exit;
             $user = $this->Users->patchEntity($user, $data);
             $user->id = $this->request->session()->read('Auth.User.id');
             if (!empty($data['changepassword']) == 'Change password') {
@@ -220,7 +190,6 @@ class AppadminsController extends AppController {
     public function viewUsers($payment_id = null) {
         $type = $this->request->session()->read('Auth.User.type');
         $id = $this->request->session()->read('Auth.User.id');
-//for stylist
         if ($type == 3) {
             if ($payment_id) {
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
@@ -232,14 +201,10 @@ class AppadminsController extends AppController {
 
             $mass_product_count = array();
             foreach ($userdetails as $details) {
-
-                // code use for users barcode image generater
-
-
                 $mass_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id =' => 0])->count();
                 $mass_kid_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id !=' => 0])->count();
             }
-        } elseif ($type == 1) {//for admin
+        } elseif ($type == 1) {
             if ($payment_id) {
                 $employee = $this->Users->find('all')->where(['Users.type' => 3, 'Users.is_active' => 1]);
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
@@ -249,26 +214,18 @@ class AppadminsController extends AppController {
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
                 $userdetails = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails', 'Users.KidsDetails', 'Users.MenStats', 'Users.SizeChart'])->where(['PaymentGetways.status' => 1, 'PaymentGetways.payment_type' => 1, 'PaymentGetways.work_status IN' => [0, 1]])->order(['PaymentGetways.created_dt' => 'DESC'])->group(['PaymentGetways.id']);
             }
-
             $mass_product_count = array();
             $i = 1;
-
             foreach ($userdetails as $details) {
-
                 $kidCount[$i] = $this->PaymentGetways->find('all')->where(['PaymentGetways.status' => 1, 'PaymentGetways.profile_type' => 3, 'PaymentGetways.user_id' => $details->id])->count();
                 $mass_product_count[@$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id =' => 0, 'payment_id' => $details->id])->count();
                 $mass_kid_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id !=' => 0])->count();
 
                 $i++;
             }
-
-
-
             $staff_assigned_user = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails'])->where(['PaymentGetways.emp_id' => $id])->order(['PaymentGetways.created_dt' => 'DESC']);
         }
-
         foreach ($userdetails as $details) {
-
             if ($details->kid_id == 0) {
                 $getCheckBarcode = $this->UserDetails->find('all')->where(['user_id' => $details->user_id])->first();
                 if ($getCheckBarcode->barcode_image == '') {
@@ -278,12 +235,10 @@ class AppadminsController extends AppController {
                         $this->Custom->create_profile_image($name);
                         $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
                         $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::TYPE_CODE_128));
-
                         list($type, $dataImg) = explode(';', $dataImg);
                         list(, $dataImg) = explode(',', $dataImg);
                         $dataImg = base64_decode($dataImg);
                         file_put_contents(BARCODE_PROFILE . $name, $dataImg);
-
                         $this->UserDetails->updateAll(['barcode_image' => $name], ['user_id' => $details->user_id]);
                     }
                 }
@@ -296,19 +251,15 @@ class AppadminsController extends AppController {
                         $this->Custom->create_profile_image($name);
                         $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
                         $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::TYPE_CODE_128));
-
                         list($type, $dataImg) = explode(';', $dataImg);
                         list(, $dataImg) = explode(',', $dataImg);
                         $dataImg = base64_decode($dataImg);
                         file_put_contents(BARCODE_PROFILE . $name, $dataImg);
-
                         $this->KidsDetails->updateAll(['barcode_image' => $name], ['id' => $details->kid_id]);
                     }
                 }
             }
         }
-
-
         $this->set(compact('paymentCount', 'kid_assigned', 'kidCount', 'userdetails', 'mass_product_count', 'employee', 'type', 'id', 'staff_assigned_user', 'mass_kid_product_count'));
     }
 
@@ -317,7 +268,6 @@ class AppadminsController extends AppController {
         $id = $this->request->session()->read('Auth.User.id');
         $mass_kid_product_count = array();
         $mass_product_count = array();
-//for staff
         if ($type == 3) {
             if ($payment_id) {
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
@@ -326,14 +276,11 @@ class AppadminsController extends AppController {
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
                 $userdetails = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails'])->where(['PaymentGetways.emp_id' => $id, 'PaymentGetways.status' => 1, 'PaymentGetways.payment_type' => 1, 'PaymentGetways.work_status' => 2])->order(['PaymentGetways.created_dt' => 'DESC'])->group(['PaymentGetways.id']);
             }
-
-
             foreach ($userdetails as $details) {
-
                 $mass_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id =' => 0])->count();
                 $mass_kid_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id !=' => 0])->count();
             }
-        } elseif ($type == 1) {//for admin
+        } elseif ($type == 1) {
             if ($payment_id) {
                 $employee = $this->Users->find('all')->where(['Users.type' => 3, 'Users.is_active' => 1]);
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
@@ -343,30 +290,18 @@ class AppadminsController extends AppController {
                 $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
                 $userdetails = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails', 'Users.KidsDetails', 'Users.MenStats', 'Users.SizeChart'])->where(['PaymentGetways.status' => 1, 'PaymentGetways.payment_type' => 1, 'PaymentGetways.work_status' => 2])->order(['PaymentGetways.created_dt' => 'DESC'])->group(['PaymentGetways.id']);
             }
-
             $mass_product_count = array();
             $i = 1;
-
             foreach ($userdetails as $details) {
                 $kidCount[$i] = $this->PaymentGetways->find('all')->where(['PaymentGetways.status' => 1, 'PaymentGetways.profile_type' => 3, 'PaymentGetways.user_id' => $details->user_id])->count();
-
-
                 $mass_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id =' => 0])->count();
                 $mass_kid_product_count[$details->id] = $this->Products->find('all')->where(['Products.payment_id' => $details->id, 'Products.kid_id !=' => 0])->count();
 
                 $i++;
             }
 
-
-            //$datacount=$this->Products->find('all')->where(['Products.kid_id' => 6, 'Products.payment_id' => 9,'Products.kid_id !=' => 0])->count();
-            //echo $datacount; 
-            // pj($mass_kid_product_count); exit;
-
-
             $staff_assigned_user = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails'])->where(['PaymentGetways.emp_id' => $id])->order(['PaymentGetways.created_dt' => 'DESC']);
         }
-
-
         $this->set(compact('paymentCount', 'kid_assigned', 'kidCount', 'userdetails', 'mass_product_count', 'employee', 'type', 'id', 'staff_assigned_user', 'mass_kid_product_count'));
     }
 
@@ -376,15 +311,11 @@ class AppadminsController extends AppController {
         $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid, 'default_set' => 1])->first();
         $this->KidsDetails->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $kid = $this->KidsDetails->find('all')->contain(['Users', 'KidsPersonality', 'KidsSizeFit', 'KidClothingType', 'KidsPrimary', 'KidsPricingShoping', 'KidPurchaseClothing', 'KidStyles'])->where(['KidsDetails.id' => $useridDetails->kid_id])->group(['KidsDetails.id'])->first();
-        // echo "<pre>";
-        // print_r($kid); exit;
 
         $KidsSizeFit = $this->KidsSizeFit->find('all')->where(['KidsSizeFit.kid_id' => $useridDetails->kid_id])->first();
-
         $KidClothingType = $this->KidClothingType->find('all')->where(['KidClothingType.kid_id' => $useridDetails->kid_id])->first();
         $designe = $this->CustomDesine->find('all')->where(['kid_id' => $useridDetails->kid_id])->first();
         $KidStyles = $this->KidStyles->find('all')->where(['KidStyles.kid_id' => $useridDetails->kid_id])->first();
-        //pj(@$kid); exit;
         $kid_barcode = $this->KidsDetails->find('all')->where(['KidsDetails.user_id' => $userid])->first();
         if ($payment_id) {
             $name = $payment_id . '.png';
@@ -392,16 +323,12 @@ class AppadminsController extends AppController {
             $this->Custom->create_profile_image($name);
             $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
             $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::TYPE_CODE_128));
-
             list($type, $dataImg) = explode(';', $dataImg);
             list(, $dataImg) = explode(',', $dataImg);
             $dataImg = base64_decode($dataImg);
             file_put_contents(BARCODE_PROFILE . $name, $dataImg);
-
             $this->KidsDetails->updateAll(['barcode_image' => $name], ['user_id' => $userid]);
         }
-
-
         $this->set(compact('useridDetails', 'kid_barcode', 'kid', 'KidsSizeFit', 'KidClothingType', 'designe', 'KidStyles', 'shipping_address'));
     }
 
@@ -427,22 +354,13 @@ class AppadminsController extends AppController {
         } else {
             $productCheckOut = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status = ' => 0, 'Products.checkedout IN ' => ['N'],])->count();
         }
-
-
-        // echo $productCheckOut; exit;
         $user_name = $this->Users->find('all')->where(['Users.id' => $userId])->first();
         $user_type = $this->request->session()->read('Auth.User.type');
-//        pj($user_name);exit;
         if (@$paymentId && @$productId) {
             $productEditDetails = $this->Products->find('all')->where(['Products.id' => @$productId])->first();
         }
-
-
-
-
         if ($this->request->is('post')) {
             $data = $this->request->data;
-
             if (@$data['id']) {
                 $data['id'] = $data['id'];
                 $editData = $this->Products->find('all')->where(['Products.id' => $data['id']])->first();
@@ -454,7 +372,6 @@ class AppadminsController extends AppController {
                 $this->Custom->create_image($name);
                 $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
                 $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::TYPE_CODE_128));
-                //  $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::YPE_EAN_2));
                 list($type, $dataImg) = explode(';', $dataImg);
                 list(, $dataImg) = explode(',', $dataImg);
                 $dataImg = base64_decode($dataImg);
@@ -463,16 +380,9 @@ class AppadminsController extends AppController {
                 $data['barcode_image'] = $name;
                 $data['barcode_value'] = $barcode_value;
                 $data['user_id'] = $data['user_id'];
-//$data['is_retrun'] = 1;
-//                pj($data['user_id']);exit;
-//$data['payment_id'] = $data['payment_id'];
                 $data['payment_id'] = $paymentId;
                 @$data['id'] = '';
             }
-
-
-
-
             if (@$data['dataexchange']) {
                 $exchangeId = $data['dataexchange'];
                 $exchangeData = $this->Products->find('all')->where(['Products.id' => $exchangeId])->first();
@@ -486,11 +396,8 @@ class AppadminsController extends AppController {
             } else {
                 $data['created'] = date('Y-m-d H:i:s');
             }
-
             $data['product_purchase_date'] = date('Y-m-d', strtotime(@$data['product_purchase_date']));
             $data['product_valid_return_date'] = date('Y-m-d', strtotime(@$data['product_valid_return_date']));
-
-
             if (!empty($data['image']['tmp_name'])) {
                 if ($data['image']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['image']['tmp_name'], $data['image']['name'], PRODUCT_IMAGES, 400);
@@ -501,7 +408,6 @@ class AppadminsController extends AppController {
             } else {
                 $data['product_image'] = $editData->product_image;
             }
-
             if (!empty($data['product']['tmp_name'])) {
                 if ($data['product']['size'] <= 15000) {
                     $imageName1 = $this->Custom->uploadImageBanner($data['product']['tmp_name'], $data['product']['name'], PRODUCT_RECEIPT, 400);
@@ -512,18 +418,11 @@ class AppadminsController extends AppController {
             } else {
                 $data['product_receipt'] = @$editData->product_receipt;
             }
-
-// $data['is_retrun'] = 1;
             $product = $this->Products->patchEntity($product, $data);
-
-
             $this->Products->save($product);
             $this->PaymentGetways->updateAll(['mail_status' => 0], ['id' => $paymentId]);
-
             if (@$data['id']) {
-
                 $this->Flash->success(__('Data has been updated successfully.'));
-
                 return $this->redirect(HTTP_ROOT . 'appadmins/addproduct/' . $paymentId . '/' . $data['id']);
             } else {
                 $this->Flash->success(__('Data has been added successfully.'));
@@ -533,10 +432,7 @@ class AppadminsController extends AppController {
 
         $productcount = $this->Products->find('all')->where(['Products.user_id' => $userId, 'Products.kid_id =' => 0])->count();
         if ($userId) {
-
-
             $productdetails = $this->Products->find('all')->where(['Products.user_id' => $userId, 'Products.payment_id' => $paymentId, 'Products.kid_id =' => 0])->order(['Products.created' => 'DESC']);
-            //pj($productdetails);exit;
         }
         $this->set(compact('productCheckOut', 'user_type', 'userId', 'productId', 'productdetails', 'productEditDetails', 'productcount', 'user_name', 'paymentId'));
     }
@@ -593,10 +489,6 @@ class AppadminsController extends AppController {
         if ($this->request->is('post')) {
             $data = $this->request->data;
             $dataEntity = $this->Testimonials->patchEntity($dataEntity, $data);
-//     if (!empty($data['image']['tmp_name'])) {
-//      $imageName = $this->Custom->uploadImageBanner($data['image']['tmp_name'], $data['image']['name'], CUSTOMER, 96);
-//      $dataEntity->image = $imageName;
-//     }
             $dataEntity->image = '0';
             $dataEntity->is_active = 1;
             $this->Testimonials->save($dataEntity);
@@ -688,7 +580,6 @@ class AppadminsController extends AppController {
     }
 
     public function cmsPage() {
-//    $dataListings = $this->Users->find('all')->where(['Pages.id NOT IN' => [1, 4, 5, 8, 9, 10, 11, 12]])->order(['Pages.id' => 'ASC']);
         $dataListings = $this->Pages->find('all')->order(['Pages.id' => 'DESC']);
         $this->set(compact('dataListings'));
     }
@@ -803,31 +694,28 @@ class AppadminsController extends AppController {
                 echo " Employee Not Assigned";
             }
         }
-
         exit;
     }
 
     public function employeeAssignedKid() {
         if ($this->request->is('post')) {
             $data = $this->request->data;
-
-
-
             if (@$data['emp_id']) {
                 $this->PaymentGetways->updateAll(['profile_type' => 3, 'emp_id' => $data['emp_id'], 'work_status' => '1'], ['id' => $data['id']]);
                 $employee = $this->Users->find('all')->where(['Users.id' => $data['emp_id']])->first();
                 $getUserId = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $data['id']])->first();
                 $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
-                $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'EmployeeAssigned'])->first();
+                $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'EmployeeAssignedKid'])->first();
                 $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
                 $to = $employee->email;
                 $from = $fromMail->value;
                 $subject = $emailMessage->display;
                 $sitename = SITE_NAME;
-                $message = $this->Custom->EmployeeAssignedFormat($emailMessage->value, $getUserDetails->name, $employee->name, $sitename);
                 $kid_id = $getUserId->kid_id;
+                $kidname = $this->Custom->kidName($kid_id);
+                $message = $this->Custom->EmployeeAssignedKidFormat($emailMessage->value, $getUserDetails->name, $employee->name, $sitename, $kidname);
+                
                 $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
-
                 echo " Employee Assigned successfully";
             } else {
                 $this->PaymentGetways->updateAll(['emp_id' => '', 'work_status' => 0], ['id' => $data['id']]);
@@ -838,83 +726,58 @@ class AppadminsController extends AppController {
     }
 
     public function review($payent_id = null) {
-
         $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $userdetails = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails'])->where(['PaymentGetways.status' => 1, 'PaymentGetways.id' => $payent_id])->first();
         $id = $userdetails->user_id;
-//        pj($userdetails);exit;
         $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $id, 'default_set' => 1])->first();
         $MenStats = $this->MenStats->find('all')->where(['MenStats.user_id' => $id])->first();
-        //print_r($MenStats); exit;
         $TypicallyWearMen = $this->TypicallyWearMen->find('all')->where(['TypicallyWearMen.user_id' => $id])->first();
         $MenStyle = $this->MenStyle->find('all')->where(['MenStyle.user_id' => $id])->first();
         $MenFit = $this->MenFit->find('all')->where(['MenFit.user_id' => $id])->first();
         $MensBrands = $this->MensBrands->find('all')->where(['MensBrands.user_id' => $id]);
         $menbrand = $MensBrands->extract('mens_brands')->toArray();
         $style_sphere_selections = $this->MenStyleSphereSelections->find('all')->where(['MenStyleSphereSelections.user_id' => $id])->first();
-
         $style_sphere_selectionsWemen = $this->WemenStyleSphereSelections->find('all')->where(['user_id' => $id])->first();
         $menSccessories = $this->MenAccessories->find('all')->where(['user_id' => $id])->first();
         $PersonalizedFix = $this->PersonalizedFix->find('all')->where(['PersonalizedFix.user_id' => $id])->first();
         $SizeChart = $this->SizeChart->find('all')->where(['SizeChart.user_id' => $id])->first();
         $FitCut = $this->FitCut->find('all')->where(['FitCut.user_id' => $id])->first();
         $menDesigne = $this->CustomDesine->find('all')->where(['user_id' => $id])->first();
-
         $WomenJeansStyle = $this->WomenJeansStyle->find('all')->where(['WomenJeansStyle.user_id' => $id])->first();
-
-
-//                pj($WomenJeansStyle);exit;
         $WomenJeansRise1 = $this->WomenJeansRise->find('all')->where(['WomenJeansRise.user_id' => $id]);
         $WomenJeansRise = $WomenJeansRise1->extract('jeans_rise')->toArray();
 
         $WomenJeansLength1 = $this->WemenJeansLength->find('all')->where(['WemenJeansLength.user_id' => $id]);
         $WomenJeansLength = $WomenJeansLength1->extract('jeans_length')->toArray();
         $Womenstyle = $this->WomenStyle->find('all')->where(['WomenStyle.user_id' => $id])->first();
-//                pj($Womenstyle);exit;
-// $WomenRatherDownplay = $this->WomenRatherDownplay->find('all')->where(['WomenRatherDownplay.user_id' => $this->Auth->user('id')])->first();
-
         $Womenprice = $this->WomenPrice->find('all')->where(['WomenPrice.user_id' => $id])->first();
         $Womeninfo = $this->WomenInformation->find('all')->where(['WomenInformation.user_id' => $id])->first();
         $primaryinfo = explode(",", @$Womeninfo->primary_objectives);
-//                pj($primaryinfo);exit;
-
         $womens_brands_plus_low_tier1 = $this->WomenTypicalPurchaseCloth->find('all')->where(['WomenTypicalPurchaseCloth.user_id' => $id]);
         $womens_brands_plus_low_tier = $womens_brands_plus_low_tier1->extract('womens_brands_plus_low_tier')->toArray();
-
         $style_wardrobe1 = $this->WomenIncorporateWardrobe->find('all')->where(['WomenIncorporateWardrobe.user_id' => $id]);
         $style_wardrobe = $style_wardrobe1->extract('style_wardrobe')->toArray();
-
-
         $avoid_colors1 = $this->WomenColorAvoid->find('all')->where(['WomenColorAvoid.user_id' => $id]);
         $avoid_colors = $avoid_colors1->extract('avoid_colors')->toArray();
-
         $avoid_prints1 = $this->WomenPrintsAvoid->find('all')->where(['WomenPrintsAvoid.user_id' => $id]);
         $avoid_prints = $avoid_prints1->extract('avoid_prints')->toArray();
-
-
         $avoid_fabrics1 = $this->WomenFabricsAvoid->find('all')->where(['WomenFabricsAvoid.user_id' => $id]);
         $avoid_fabrics = $avoid_fabrics1->extract('avoid_fabrics')->toArray();
         $wemenDesigne = $this->CustomDesine->find('all')->where(['user_id' => $id])->first();
         $womenHeelHightPrefer = $this->WomenHeelHightPrefer->find('all')->where(['user_id' => $id])->first();
         $women_shoe_prefer = $this->WomenShoePrefer->find('all')->where(['user_id' => $id])->first();
-//women code
-//generate the barcode
         if ($payent_id) {
             $name = $payent_id . '.png';
             $barcode_value = $payent_id;
             $this->Custom->create_profile_image($name);
             $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
             $dataImg = "data:image/png;base64," . base64_encode($generator->getBarcode($barcode_value, $generator::TYPE_CODE_128));
-
             list($type, $dataImg) = explode(';', $dataImg);
             list(, $dataImg) = explode(',', $dataImg);
             $dataImg = base64_decode($dataImg);
             file_put_contents(BARCODE_PROFILE . $name, $dataImg);
-
             $this->UserDetails->updateAll(['barcode_image' => $name], ['user_id' => $id]);
         }
-//generate the barcode
-
         $this->set(compact('style_sphere_selectionsWemen', 'wemenDesigne', 'menDesigne', 'menSccessories', 'shipping_address', 'userdetails', 'MenStats', 'TypicallyWearMen', 'MenFit', 'MenStyle', 'menbrand', 'style_sphere_selections', 'id', 'primaryinfo', 'Womeninfo', 'style_wardrobe', 'avoid_fabrics', 'avoid_prints', 'avoid_colors', 'womens_brands_plus_low_tier', 'WomenJeansStyle', 'Womenprice', 'Womenstyle', 'WomenRatherDownplay', 'WomenJeansLength', 'WomenJeansRise', 'FitCut', 'SizeChart', 'PersonalizedFix', 'womenHeelHightPrefer', 'women_shoe_prefer'));
     }
 
@@ -923,16 +786,13 @@ class AppadminsController extends AppController {
         $setPassword = $this->Users->find('all')->where(['Users.id' => $id])->first();
         if ($this->request->is('post')) {
             $data = $this->request->data;
-
             $password = $data['password'];
             $conpassword = $data['cpassword'];
             if ($password != $conpassword) {
                 $this->Flash->error(__("Password and confirm password are not same"));
             } else {
-
                 $passwordData = $this->Users->patchEntity($passwordData, $data);
                 $passwordData->id = $data['id'];
-
                 if ($this->Users->save($passwordData)) {
                     $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'CREATE_ADMIN'])->first();
                     $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
@@ -940,7 +800,6 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-
                     $message = $this->Custom->createAdminFormat($emailMessage->value, $setPassword->name, $to, $password, $sitename);
                     $kid_id = 0;
                     $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
@@ -963,23 +822,7 @@ class AppadminsController extends AppController {
     }
 
     public function paymentGateways() {
-//    $entity = $this->JccGetways->newEntity();
-//    $row = $this->JccGetways->find()->where(['JccGetways.id' => 1])->first();
-//    if ($this->request->is('post')) {
-//     $data = $this->request->data;
-//     if (@$data['checkbox3'] == 1) {
-//      $data['mode'] = 1;
-//     } else {
-//      $data['mode'] = 0;
-//     }
-//     $entity = $this->JccGetways->patchEntity($entity, $data);
-//     if ($this->JccGetways->save($entity)) {
-//      $this->Flash->success(__('Jcc payment information has been update successfully'));
-//      $this->redirect(HTTP_ROOT . 'appadmins/payment_gateways/');
-//     }
-//    }
-//
-//    $this->set(compact('row'));
+        
     }
 
     public function deactive($id = null, $table = null) {
@@ -1195,7 +1038,7 @@ class AppadminsController extends AppController {
             $product->payment_id = $data['payment_id'];
             $product->is_retrun = 1;
             if (!empty($data['image']['tmp_name'])) {
-                if ($data['image']['size'] <= 8000) {
+                if ($data['image']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['image']['tmp_name'], $data['image']['name'], PRODUCT_IMAGES, 400);
                     $product->product_image = $imageName;
                 } else {
@@ -1204,7 +1047,7 @@ class AppadminsController extends AppController {
             }
 //product receipt
             if (!empty($data['product']['tmp_name'])) {
-                if ($data['product']['size'] <= 8000) {
+                if ($data['product']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['product']['tmp_name'], $data['product']['name'], PRODUCT_RECEIPT, 400);
                     $product->product_receipt = $imageName;
                 } else {
@@ -1338,12 +1181,8 @@ class AppadminsController extends AppController {
         $this->Products->belongsTo('KidsDetails', ['className' => 'KidsDetails', 'foreignKey' => 'kid_id']);
         $this->Products->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $productData = $this->Products->find('all')->contain(['KidsDetails', 'Users'])->where(['Products.id' => $id])->first();
-
-        //pj($productData);exit;
         $customer_review_Data = $this->CustomerProductReview->find('all')->where(['CustomerProductReview.user_id' => $productData->user_id])->first();
         $customer_review_Data_count = $this->CustomerProductReview->find('all')->where(['CustomerProductReview.user_id' => $productData->user_id])->count();
-
-//        pj($customer_review_Data);exit;
         $this->set(compact('productData', 'customer_review_Data', 'customer_review_Data_count'));
     }
 
@@ -1380,8 +1219,6 @@ class AppadminsController extends AppController {
 
         $this->Products->belongsTo('KidsDetails', ['className' => 'KidsDetails', 'foreignKey' => 'kid_id']);
         $kid_product = $this->Products->find('all')->where(['Products.payment_id' => $paymentId])->order(['Products.created' => 'ASC']);
-
-
         $employee = $this->Users->find('all')->where(['Users.type' => 3]);
         if ($this->request->is('post')) {
             $product = $this->Products->newEntity();
@@ -1390,8 +1227,6 @@ class AppadminsController extends AppController {
             if (@$data['id']) {
                 $data['id'] = $data['id'];
             } else {
-
-
                 $maxId = $this->Products->find('all')->order(['Products.id' => 'DESC'])->first();
                 $ownId = @$maxId->id + 1;
                 $name = $ownId . '.png';
@@ -1416,11 +1251,11 @@ class AppadminsController extends AppController {
                     $exchangeId = $data['dataexchange'];
                     $exchangeData = $this->Products->find('all')->where(['Products.id' => $exchangeId])->first();
                     if ($exchangeData) {
-
                         $this->Products->updateAll(['is_altnative_product' => 1, 'is_complete' => '1'], ['id' => $exchangeId]);
                         $cenvertedTime = date('Y-m-d H:i:s', strtotime('+10 seconds', strtotime($exchangeData->created)));
                         $data['created'] = $cenvertedTime;
                         $data['is_altnative_product'] = 0;
+                        $data['is_exchange_pending'] = 1;
                     }
                 } else {
                     $data['created'] = date('Y-m-d H:i:s');
@@ -1436,7 +1271,7 @@ class AppadminsController extends AppController {
             if (!empty($data['image']['tmp_name'])) {
 
 
-                if ($data['image']['size'] <= 8000) {
+                if ($data['image']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['image']['tmp_name'], $data['image']['name'], PRODUCT_IMAGES, 400);
                     $data['product_image'] = $imageName;
                 } else {
@@ -1445,7 +1280,7 @@ class AppadminsController extends AppController {
             }
 //product receipt
             if (!empty($data['product']['tmp_name'])) {
-                if ($data['product']['size'] <= 8000) {
+                if ($data['product']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['product']['tmp_name'], $data['product']['name'], PRODUCT_RECEIPT, 400);
                     $data['product_receipt'] = $imageName;
                 } else {
@@ -1697,7 +1532,8 @@ class AppadminsController extends AppController {
                         $from = $fromMail->value;
                         $subject = $emailMessage->display;
                         $sitename = SITE_NAME;
-                        $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename);
+                        $lasst_dtt = date_format($promocode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
+                        $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename, $lasst_dtt);
                         $kid_id = 0;
                         $this->Custom->sendEmail($to, $from, $subject, $message);
 
@@ -1784,7 +1620,9 @@ class AppadminsController extends AppController {
             // $this->Users->updateAll(['is_redirect' => '4'], ['id' => $getUserId->user_id]);
 
             $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
+            $bil_address = $this->ShippingAddress->find('all')->where(['user_id' => $getUserId->user_id, 'is_billing' => 1])->first();
             $totalProductscount = $this->Products->find('all')->where(['Products.payment_id' => $getpaymentid, 'is_complete' => 0])->count();
+
             $totalCheckoutproductCount = $this->Products->find('all')->where(['Products.payment_id' => $getpaymentid, 'checkedout' => 'N', 'is_complete' => 0])->count();
 
             //echo $totalProductscount;
@@ -1812,7 +1650,12 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename);
+                    $track_number = $getUserId->order_usps_tracking_no;
+                    $purchase_date = date_format($getUserId->customer_purchasedate, 'm/d/Y');
+                    $address1 = $bil_address->address;
+                    $address3 = $bil_address->address_line_2;
+                    $address2 = $bil_address->state . ' ' . $bil_address->zipcode . ' ' . $bil_address->country;
+                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename, $track_number, $purchase_date, $address1, $address2);
                     $kid_id = 0;
                     $this->Custom->sendEmail($to, $from, $subject, $message);
 
@@ -1835,6 +1678,8 @@ class AppadminsController extends AppController {
             $this->Products->updateAll(['checkedout' => 'N'], ['id' => $product_id]);
             $name = $this->Auth->user('name');
             $getUserId = $this->Products->find('all')->where(['Products.id' => $product_id])->first();
+            $bil_address = $this->ShippingAddress->find('all')->where(['user_id' => $getUserId->user_id, 'is_billing' => 1])->first();
+
             $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
 
             $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'PRODUCT_FINALIZE'])->first();
@@ -1872,7 +1717,12 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename);
+                    $track_number = $getUserId->order_usps_tracking_no;
+                    $purchase_date = date_format($getUserId->customer_purchasedate, 'm/d/Y');
+                    $address1 = $bil_address->address;
+                    $address3 = $bil_address->address_line_2;
+                    $address2 = $bil_address->state . ' ' . $bil_address->zipcode . ' ' . $bil_address->country;
+                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename, $track_number, $purchase_date, $address1, $address2);
                     $kid_id = $paymentDetails->kid_id;
                     $this->Custom->sendEmail($to, $from, $subject, $message);
                 }
@@ -2159,8 +2009,9 @@ class AppadminsController extends AppController {
                         $subject = @$emailMessage->display;
 
                         $sitename = SITE_NAME;
+                        $lasst_dtt = date_format($giftcode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
 
-                        $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename);
+                        $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename, $lasst_dtt);
 
                         $kid_id = 0;
                         $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
@@ -2391,9 +2242,9 @@ class AppadminsController extends AppController {
     }
 
     function customerPaymentdetails($id) {
-        $getpgDetails = $this->PaymentGetways->find('all')->where(['user_id' => $id]);
-        $userId=$id;
-        $this->set(compact('getpgDetails','userId'));
+        $tablename = TableRegistry::get('PaymentGetways');
+        $getpgDetails = $tablename->find('all')->where(['user_id' => $id]);
+        $this->set(compact('getpgDetails'));
     }
 
     public function listCustomerDetails($userid = null) {
@@ -2541,7 +2392,7 @@ class AppadminsController extends AppController {
         $this->redirect(HTTP_ROOT . 'appadmins/junk_customer_list');
     }
 
-     function fundrefund() {
+    function fundrefund() {
         $AllUserList = $this->PaymentGetways->find('all')->where(['work_status IN' => [0, 1], 'status' => 1])->order(['id' => 'desc']);
         $this->set(compact('AllUserList'));
         if ($this->request->is('post')) {
@@ -2576,7 +2427,7 @@ class AppadminsController extends AppController {
 
                 // PJ($arr_user_info); 
                 $message = $this->authorizeCreditCard($arr_user_info);
-                 if (@$message['Code'] == '1') {
+                if (@$message['Code'] == '1') {
                     $this->PaymentGetways->updateAll(['refound_status' => 1, 'refund_transactions_id ' => $message['TRANS'], 'refound_date' => date('Y-m-d H:i:s'), 'refund_msg' => $data['refund_msg']], ['id' => $getPaymentDetails->id]);
                     if (($getPaymentDetails->user_id != '') && ($getPaymentDetails->kid_id == 0)) {
                         $this->Users->updateAll(['is_redirect' => 5,], ['id' => $getPaymentDetails->user_id]);
@@ -2591,23 +2442,24 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $price = $getPaymentDetails->price;
+                    $price = number_format($getPaymentDetails->price, 2);
                     $transctionsId = $message['TRANS'];
                     $name = $userDetails->name;
                     $email = $useremail;
                     $sitename = HTTP_ROOT;
                     $rdate = date('Y-m-d  H:i:s');
-                    $email_message = $this->Custom->Refunded($emailMessage->value, $price, $transctionsId, $name, $email, $rdate, $sitename);
+                    $mEssAge = $data['refund_msg'];
+                    $last_4_digit = substr($getCardDetails->card_number, -4);
+                    $email_message = $this->Custom->Refunded($emailMessage->value, $price, $transctionsId, $name, $email, $rdate, $sitename, $mEssAge, $last_4_digit);
                     //echo $email_message; exit;
                     $this->Custom->sendEmail($to, $from, $subject, $email_message);
                     $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
                     $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
                     $this->Flash->success(__($message['msg']));
                 } else {
-                   
-                    
+
+
                     $this->Flash->error(__($message['msg']));
-                    
                 }
                 $this->redirect(HTTP_ROOT . 'appadmins/fundrefund');
             }
@@ -2663,40 +2515,39 @@ class AppadminsController extends AppController {
         $request->setRefId($refId);
         $request->setTransactionRequest($transactionRequestType);
         $controller = new AnetController\CreateTransactionController($request);
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
-        $msg=array();
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        $msg = array();
         if ($response != null) {
             if ($response->getMessages()->getResultCode() == "Ok") {
                 $tresponse = $response->getTransactionResponse();
                 if ($tresponse != null && $tresponse->getMessages() != null) {
-                    $msg['Code']=$tresponse->getMessages()[0]->getCode();
-                    $msg['RCode']=$tresponse->getResponseCode();
-                    $msg['TRANS']=$tresponse->getTransId();
-                    $msg['msg']=$tresponse->getMessages()[0]->getDescription();
+                    $msg['Code'] = $tresponse->getMessages()[0]->getCode();
+                    $msg['RCode'] = $tresponse->getResponseCode();
+                    $msg['TRANS'] = $tresponse->getTransId();
+                    $msg['msg'] = $tresponse->getMessages()[0]->getDescription();
                 } else {
-                    
-                     $msg['msg']='Transaction Failed';
+
+                    $msg['msg'] = 'Transaction Failed';
                     if ($tresponse->getErrors() != null) {
-                        $msg['msg']= $tresponse->getErrors()[0]->getErrorText();
-                       
+                        $msg['msg'] = $tresponse->getErrors()[0]->getErrorText();
                     }
                 }
             } else {
-                $msg['msg']= 'Transaction Failed';
+                $msg['msg'] = 'Transaction Failed';
                 //echo "Transaction Failed \n";
                 $tresponse = $response->getTransactionResponse();
                 if ($tresponse != null && $tresponse->getErrors() != null) {
-                   $msg['msg']=  $tresponse->getErrors()[0]->getErrorText();
+                    $msg['msg'] = $tresponse->getErrors()[0]->getErrorText();
                 } else {
-                    
-                   $msg['msg']= $response->getMessages()->getMessage()[0]->getText();
+
+                    $msg['msg'] = $response->getMessages()->getMessage()[0]->getText();
                 }
             }
         } else {
-           $msg['msg']="No response";
+            $msg['msg'] = "No response";
         }
         //pj($response); exit;
-        
+
         return $msg;
     }
 
@@ -2709,6 +2560,28 @@ class AppadminsController extends AppController {
                 $tablename = TableRegistry::get("LetsPlanYourFirstFix");
                 $query = $tablename->query();
                 $result = $query->update()->set(['try_new_items_with_scheduled_fixes' => $data['try_new_items_with_scheduled_fixes'], 'how_often_would_you_lik_fixes' => $data['how_often_would_you_lik_fixes']])->where(['id' => $data['dataid']])->execute();
+
+                if ((@$data['try_new_items_with_scheduled_fixes'] == 0) || ($data['try_new_items_with_scheduled_fixes'] == '')) {
+                    $getLetData = $this->LetsPlanYourFirstFix->find('all')->where(['id' => $data['dataid']])->first();
+                    if ($getLetData->kid_id != '' && $getLetData->user_id != '') {
+                        $userDetails = $this->KidDetails->find('all')->where(['id' => $getLetData->kid_id])->first();
+                        $name = $userDetails->kids_first_name;
+                    } else {
+                        $userDetails = $this->Users->find('all')->where(['id' => $getLetData->user_id])->first();
+                        $name = $userDetails->name;
+                    }
+                    $useremail = $userDetails->email;
+                    $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'SubscriptionCancellationEmail'])->first();
+                    $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
+                    $to = $useremail;
+                    $from = $fromMail->value;
+                    $subject = $emailMessage->display;
+                    $sitename = SITE_NAME;
+                    $email = $useremail;
+                    $sitename = HTTP_ROOT;
+                    $email_message = $this->Custom->SubscriptionCancelationEmail($emailMessage->value, $name, $email, $sitename);
+                    $this->Custom->sendEmail($to, $from, $subject, $email_message);
+                }
             }
         }
         $this->set(compact('AllUserList'));
