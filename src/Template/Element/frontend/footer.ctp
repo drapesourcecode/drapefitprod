@@ -79,6 +79,9 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                         <li><a href="<?php echo HTTP_ROOT . 'who-we-are' ?>">Who we are</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'work-with-us' ?>">Work with us</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'careers' ?>">Careers</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'news' ?>">News</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'investors' ?>">Investors</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'executive-team' ?>">Executive Team</li>
                     </ul>
                 </div>
             </div>
