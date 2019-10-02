@@ -105,6 +105,9 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/sitemap', ['controller' => 'pages', 'action' => 'sitemap']);
     $routes->connect('/supply-chain-information', ['controller' => 'pages', 'action' => 'supplyChainInformation']);
     $routes->connect('/influencer-Program', ['controller' => 'pages', 'action' => 'influencerProgram']);
+    $routes->connect('/news', ['controller' => 'pages', 'action' => 'news']);
+    $routes->connect('/investors', ['controller' => 'pages', 'action' => 'investors']);
+    $routes->connect('/executive-team', ['controller' => 'pages', 'action' => 'executive']);
 
 
 
