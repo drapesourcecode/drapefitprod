@@ -20,39 +20,66 @@ class PagesController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        
-        $this->Auth->allow(['whoWeAre', 'WorkWithUs', 'helpCenter', 'aboutus', 'privacy', 'termsCondition', 'faq', 'blog', 'careers', 'cookieInfo', 'gifts', 'sitemap', 'supplyChainInformation', 'contactUs', 'influencerProgram']);
+
+        $this->Auth->allow(['executive', 'investors', 'news', 'whoWeAre', 'WorkWithUs', 'helpCenter', 'aboutus', 'privacy', 'termsCondition', 'faq', 'blog', 'careers', 'cookieInfo', 'gifts', 'sitemap', 'supplyChainInformation', 'contactUs', 'influencerProgram']);
+    }
+
+    public function news() {
+        $title_for_layout = "news | Drape fit";
+        $metaKeyword = "";
+        $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
+        $this->viewBuilder()->setlayout('default');
+        //$pageDetails = $this->Pages->find('all')->where(['Pages.id' => 4])->first();
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+    }
+
+    public function investors() {
+        $title_for_layout = "investors | Drape fit";
+        $metaKeyword = "";
+        $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
+        $this->viewBuilder()->setlayout('default');
+        //$pageDetails = $this->Pages->find('all')->where(['Pages.id' => 4])->first();
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+    }
+
+    public function executive() {
+        $title_for_layout = "executive team | Drape fit";
+        $metaKeyword = "";
+        $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
+        $this->viewBuilder()->setlayout('default');
+        // $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 4])->first();
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
     }
 
     public function influencerProgram() {
-         $title_for_layout = "blog | Drape fit";
+        $title_for_layout = "blog | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 4])->first();
-         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
     }
 
     public function supplyChainInformation() {
-         $title_for_layout = "blog | Drape fit";
+        $title_for_layout = "blog | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 7])->first();
-         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
     }
 
     public function sitemap() {
-         $title_for_layout = "blog | Drape fit";
+        $title_for_layout = "blog | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 6])->first();
-         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
     }
 
     public function gifts() {
-         $title_for_layout = "blog | Drape fit";
+        $title_for_layout = "blog | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
         $this->viewBuilder()->setlayout('default');
@@ -61,12 +88,12 @@ class PagesController extends AppController {
     }
 
     public function cookieInfo() {
-         $title_for_layout = "blog | Drape fit";
+        $title_for_layout = "blog | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 9])->first();
-         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
     }
 
     public function careers() {
@@ -90,7 +117,7 @@ class PagesController extends AppController {
     }
 
     public function faq() {
-        
+
         $title_for_layout = "FAQ | Drape fit";
         $metaKeyword = "";
         $metaDescription = "We have our own size charts to measure the accurate size of our customers. If you want to evaluate your size, please follow the size charts and get the perfect size of yours.";
@@ -144,7 +171,7 @@ class PagesController extends AppController {
         $title_for_layout = "About us – DrapeFit";
         $metaKeyword = "";
         $metaDescription = "DrapeFit is a modern styling platform for Men, Women and Kids. Our professional stylist works hard to make you look great and upgrade your fashion wardrobe. We provide the quality products with great deals!";
-        
+
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 14])->first();
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
