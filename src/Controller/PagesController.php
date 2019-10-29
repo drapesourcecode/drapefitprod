@@ -208,21 +208,26 @@ class PagesController extends AppController {
                 return $this->redirect(HTTP_ROOT . 'contact-us');
             } else {
                 $emailTemplate = $this->Settings->find('all')->where(['Settings.name' => 'CONTACT_US'])->first();
+                $emailTemplate1 = $this->Settings->find('all')->where(['Settings.name' => 'CUSTOMER_CONTACT'])->first();
                 $emailFrom = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
                 $toAdminEmail = $this->Settings->find('all')->where(['Settings.name' => 'TO_HELP'])->first();
                 $from = $emailFrom->value;
                 $name = $data['firstName'] . ' &nbsp;' . $data['lastName'];
                 $email = $data['emailAddress'];
+                $tocustomer = $data['emailAddress'];
                 $phone = $data['phoneNo'];
                 $body_subject = $data['subject'];
                 $msg = $data['message'];
-                $subject = 'Request message from users';
+                $subject = $emailTemplate->display;
+                $subject1 = $emailTemplate1->display;
 
 
                 $message = $this->Custom->contactUs($emailTemplate->value, $name, $email, $phone, $subject, $body_subject, $msg, SITE_NAME);
+                $message1 = $this->Custom->customerContactUs($emailTemplate1->value, $name, $email, $phone, $subject1, $body_subject, $msg, SITE_NAME);
+
 
                 $this->Custom->sendEmail($toAdminEmail->value, $from, $subject, $message);
-                //$this->Custom->sendEmail('devadash143@gmail.com', $from, $subject, $message);
+                $this->Custom->sendEmail($tocustomer, $from, $subject1, $message1);
 
                 /* Mail sending below code */
                 $this->Flash->success(__('Thank you, We will get back to you soon.'));
