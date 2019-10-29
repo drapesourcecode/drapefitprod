@@ -1051,22 +1051,24 @@ if ($slug == 'reservation') {
                 //alert(result.valid);
                 $("#card_type_input").val(cardType);
                 if (cardType == 'Visa') {
-                    var backPosition = result.valid ? '1px -64px, 470px -82px' : '2px -22px, 470px -12px';
-
+                    var backPosition = result.valid ? '1px -58px, 470px -82px' : '2px -22px, 470px -12px';
                 } else if (cardType == 'MasterCard') {
-                    var backPosition = result.valid ? '2px -181px, 319px -84px' : '2px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -167px, 319px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Maestro') {
                     var backPosition = result.valid ? '2px -221px, 260px -87px' : '2px -22px, 260px -61px';
                 } else if (cardType == 'Discover') {
-                    var backPosition = result.valid ? '2px -261px, 480px -84px' : '2px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -241px, 480px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Amex') {
-                    var backPosition = result.valid ? '2px -143px, 470px -83px' : '3px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -132px, 470px -83px' : '3px -22px, 471px 14px';
                 } else if (cardType == 'jcb') {
-                    var backPosition = result.valid ? '2px -301px, 470px -83px' : '3px -22px, 471px 14px';
-                } else {
+                    var backPosition = result.valid ? '2px -279px, 470px -83px' : '3px -22px, 471px 14px';
+                }
+                else if (cardType == 'diners_club_carte_blanche') {
+                    var backPosition = result.valid ? '2px -316px, 470px -83px' : '3px -22px, 471px 14px';
+                }
+                else {
                     var backPosition = result.valid ? '2px -121px, 470px -87px' : '2px -22px, 471px 14px';
                 }
-
 
 
                 //alert(backPosition);
@@ -1196,7 +1198,7 @@ if ($slug == 'reservation') {
 
                         } else if (data.error == 'error') {
                           
-                            $('#loaderPyament').hide();
+                            $("#loader").hide();
                             $('#msg').html('<p class="alert alert-danger" id="e" >'+data.ErrorMessage +'</p>');
                             $('.apply_card').removeAttr("disabled");
                             
@@ -1210,7 +1212,7 @@ if ($slug == 'reservation') {
                         } 
                         
                         else if(data.ErrorCode!='') {
-                            $('#loaderPyament').hide();
+                            $("#loader").show();
                             var errorMessg = getErrorMessgeDetils(data.ErrorCode);
                             $('#msg').html('<p class="alert alert-danger">' + errorMessg + '</p>');
                             $('.apply_card').removeAttr("disabled");
