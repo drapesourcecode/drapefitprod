@@ -406,7 +406,7 @@ class CustomHelper extends Helper {
         
         return "";
     }
-    function previousStyleistName($userId=null,$paymenId,$count){
+    function previousStyleistName($userId=null,$paymenId=null,$count=null){
         $table = TableRegistry::get('PaymentGetways');
         $user = TableRegistry::get('Users');
         $query1 = $table->find('all')->where(['user_id' => $userId,'id'=>$paymenId,'count'=>$count])->first(); 
@@ -489,5 +489,15 @@ class CustomHelper extends Helper {
         $getstatus="Paid:-".$paidCount.' Unpaid:-'.$unpaidCount;
         return $getstatus;
     }
+    
+    function emailperference($userId=null,$kid_id=null){
+        $table = TableRegistry::get('EmailPreferences');
+        if($kid_id==0){
+            $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>0])->first()->preferences; 
+        }else{
+           $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>$kid_id])->first()->preferences;   
+        }       
+       return $query;       
+    }  
 
 }
