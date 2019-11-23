@@ -108,6 +108,14 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/news', ['controller' => 'pages', 'action' => 'news']);
     $routes->connect('/investors', ['controller' => 'pages', 'action' => 'investors']);
     $routes->connect('/executive-team', ['controller' => 'pages', 'action' => 'executive']);
+    
+    $routes->connect('/our-mission', ['controller' => 'pages', 'action' => 'ourMission']);
+    $routes->connect('/our-stylist', ['controller' => 'pages', 'action' => 'outStylist']);
+    $routes->connect('/style-blog', ['controller' => 'pages', 'action' => 'styleBlog']);
+    $routes->connect('/feedback-review', ['controller' => 'pages', 'action' => 'feedbackReview']);
+    $routes->connect('/return-exchange', ['controller' => 'pages', 'action' => 'returnExchange']);
+    $routes->connect('/track-order', ['controller' => 'pages', 'action' => 'trackOrder']);
+    $routes->connect('/map', ['controller' => 'pages', 'action' => 'map']);
 
 
 
