@@ -1,8 +1,13 @@
 <section class="copy-right">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">         
-                <span> &copy 2019 DrapeFit.</span>                        
+            <div class="col-md-6">         
+                <span>@2019 DRAPEFIT. ALL RIGHTS RESERVED.</span>              
+            </div>
+            <div class="col-md-6">
+            <ul>
+                <li><a href="<?php echo HTTP_ROOT . 'terms-conditions' ?>">Terms & Conditions |</a><a href="<?php echo HTTP_ROOT . 'privacy-policy' ?>"> Privacy Policy |</a><a href="<?php echo HTTP_ROOT . 'map' ?>"> Sitemap</a></li>
+            </ul> 
             </div>
         </div>
     </div>
@@ -11,13 +16,13 @@
         </b>
         <?php
     } else {
-        if ($paramAction = $this->request->params['action'] == 'index') {
+       // if ($paramAction = $this->request->params['action'] == 'index') {
             if ($this->request->session()->read('help-active') != 1 || $this->request->session()->read('help-active') != 2) {
                 ?>
                 <a href="<?php echo HTTP_ROOT . 'help' ?>" class="live-chat-side help">Help</a> 
                 <?php
             }
-        }
+//}
     }
     ?>
 

@@ -5,7 +5,7 @@
             <div class="banner-text">
               <h2>DRAPE FIT</h2>
               <h3>WE DO BEST FIT</h3>
-              <p>Try before you buy, save money and time. Allow us to style you no matter your age, budget or size. We do style for everyone.</p>
+              <p>Experience Effortless Style ! A box of HandPicked fashion items selected by personal stylist , sent right to your home! Keep what you love. Work 1:1 with a personal stylist to find clothes for your age ,size and budget . Try before Buy ! We do style for everyone.</p>
               <ul>
                 <li><a href="<?=HTTP_ROOT;?>men">MEN</a></li>
                 <li><a href="<?=HTTP_ROOT;?>women">WOMEN</a></li>

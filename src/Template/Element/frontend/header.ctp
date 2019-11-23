@@ -469,13 +469,14 @@ if ($paramAction == '/login') {
                 if (response.status == 'error') {
                     $('#email-error').show();
                     $('#email-error').attr('style', 'color:red;');
-
+                    $("#signupbtn").attr("disabled", true);
                     $('#email-error').html(response.msg);
-                    $('#email').val('');
+                    //$('#email').val('');
                 }
                 if (response.status == 'success') {
                     $('#email-error').attr('style', 'color:green !important;');
                     $('#email-error').html(response.msg).show();
+                    $("#signupbtn").attr("disabled", false);
 
                 }
             },
@@ -792,4 +793,31 @@ if ($paramAction == '/login') {
 
 
     });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Get Men’s Cloth, Women’s Cloth, and Kids Cloth at Great Deals - Drape fit",
+    "item": "https://www.drapefit.com/"  
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Kids Clothes Subscription Boxes | Monthly Clothing Subscription Boxes For kids |Monthly Subscription Boxes for Kids",
+    "item": "https://www.drapefit.com/kids"  
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Monthly Subscription Boxes for Men | Men's monthly box subscription | Men's monthly fashion box",
+    "item": "https://www.drapefit.com/men"  
+  },{
+    "@type": "ListItem",
+    "position": 4,
+    "name": "Monthly Subscription Boxes for Women | Subscription Boxes for women | Fashion Subscription Boxes for Women",
+    "item": "https://www.drapefit.com/women"  
+  }]
+}
 </script>
