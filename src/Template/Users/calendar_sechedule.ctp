@@ -50,7 +50,7 @@
                     <div class="Calendar-text-center">
                        <?php //echo $LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes; ?>
                         <input  onclick="getCheckBox()"  id="try_new_items_with_scheduled_fixes12" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox" <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>  <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?> >
-                        <label class="check">Automatically send FIT</label>
+                        <label class="check">Automatically send FIT </label>
                         <div class="calender-content-box">
                             <div id="optionsDIV"
                             <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
