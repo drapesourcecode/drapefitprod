@@ -146,7 +146,7 @@
                                                     <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-eye')), ['action' => 'review', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "view profile", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
                                                     <?php echo $this->Html->link($this->Html->tag('i', $mass_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?> 
                                                  
-                                                  <?= $this->Html->link($this->Html->tag('i', 'Emailx', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                  <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
 
                                                     <?php
                                                 }

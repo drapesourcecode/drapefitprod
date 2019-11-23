@@ -1990,7 +1990,7 @@
                         <div style="width: 100%; overflow: hidden;">
 
                             <?php if (@$wemenDesigne->img_1 == '') { ?>
-                                <img style="width: 100%;"> src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum1.jpg" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum1.jpg" alt="">
                             <?php } else { ?>
                                 <img style="width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_1; ?>" alt="">
                             <?php } ?>
