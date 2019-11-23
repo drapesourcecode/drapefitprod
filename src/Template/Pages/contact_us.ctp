@@ -81,7 +81,7 @@
 }
 </style>
 <script src="<?php echo HTTP_ROOT ?>jqvalidations/dist/jquery.validate.js"></script>
-<section class="contact-banner">
+<!--<section class="contact-banner">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-12 col-md-12">
@@ -90,7 +90,7 @@
         </div>
     </div>
 </section>
-<!--<section class="breadcrumbMenu">
+<section class="breadcrumbMenu">
  <div class="container">
   <ul>
    <li><a href="<?php echo HTTP_ROOT ?>">Home</a></li>
@@ -104,11 +104,11 @@
   <!-- <div class="map">
    <?php echo $map->code; ?>
   </div> -->
-  <div class="row">
+  <!--<div class="row">
     <div class="col-sm-12 col-lg-12 col-md-12">
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
     </div>
-  </div>
+  </div>-->
   <div class="inquiryForm" tyle="width: 100%; margin: 10px 0;">
     <div class="row">
 <div class="col-sm-12 col-lg-12 col-md-12">
@@ -143,7 +143,7 @@
    </div>
    <br/>
    <div style="width: 100%;" style="margin: 0;">
-    <div class="g-recaptcha" data-sitekey="6Lczbp4UAAAAAIwjJfOT33OAp8ZZvjSqnzrDUMTE"></div>
+    <div class="g-recaptcha" data-sitekey="6LcaZ8AUAAAAAFDmpyfSPQM_TykRI3wGsPwkApDS"></div>
    </div>
    <button type="submit">SUBMIT</button>
    <?php echo $this->Form->end(); ?>
@@ -196,5 +196,3 @@
 
  });
 </script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
-  
