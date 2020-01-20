@@ -20,7 +20,7 @@ class AppController extends Controller {
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadModel('Users');
-
+        $this->loadModel('UnderMaintenance');
         $this->loadModel('KidsDetails');
         $this->loadModel('MenStats');
         $this->loadModel('TypicallyWearMen');
@@ -95,9 +95,19 @@ class AppController extends Controller {
         $acction = $this->request->params['action'];
         @$params= $this->request->params['pass'][0]; ;
         
-      
+     
         
         $this->set(compact('params','type', 'name', 'email', 'user_id', 'kidDetails', 'kidsData', 'kidName', 'acction'));
+    }
+    
+    public function afterFilter(Event $event) {
+        $maintainStatus = $this->UnderMaintenance->find('all')->where(['UnderMaintenance.id' => 1])->first();
+        //echo $maintainStatus;exit;
+        if ($maintainStatus->status == 1) {
+
+            return $this->redirect(HTTP_ROOT . 'under-construction');
+            //exit;
+        }
     }
 
 }
