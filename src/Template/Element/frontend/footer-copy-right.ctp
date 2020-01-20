@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">         
-                <span>@2019 DRAPEFIT. ALL RIGHTS RESERVED.</span>              
+                <span>@2020 DRAPE FIT INC. ALL RIGHTS RESERVED.</span>                        
             </div>
             <div class="col-md-6">
             <ul>
@@ -11,18 +11,26 @@
             </div>
         </div>
     </div>
+    <a id="button"></a>
     <?php if ($this->request->session()->read('Auth.User.id')) { ?>
         <b id="chat-button" <?php if ($this->request->session()->read('CHAT_BUTTON') != 'active') { ?> style="display: block;" <?php } else { ?> style="display: none;"<?php } ?>><a href="javascript:void(0)" class="live-chat-side live-button">Live Chat</a> 
         </b>
         <?php
     } else {
+        if ($paramAction = $this->request->params['action'] == 'adminlogin') {
+            
+        }else{
        // if ($paramAction = $this->request->params['action'] == 'index') {
             if ($this->request->session()->read('help-active') != 1 || $this->request->session()->read('help-active') != 2) {
                 ?>
-                <a href="<?php echo HTTP_ROOT . 'help' ?>" class="live-chat-side help">Help</a> 
+                
+                <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6939712.js"></script>
+
+                <?php /*?<a href="<?php echo HTTP_ROOT . 'help' ?>" class="live-chat-side help">Help</a> <?PHP */ ?>
                 <?php
             }
-//}
+       // }
+        }
     }
     ?>
 
@@ -68,5 +76,18 @@
 //
 //    });
 
+    var btn = $('#button');
 
+        $(window).scroll(function() {
+          if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+          } else {
+            btn.removeClass('show');
+          }
+        });
+        
+        btn.on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({scrollTop:0}, '300');
+    });
 </script>

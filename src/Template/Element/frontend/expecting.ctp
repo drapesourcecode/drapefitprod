@@ -10,7 +10,7 @@
                 <div class="from-us">
                   <!--<div class="circle"><i class="fas fa-check"></i></div>-->
                     <h4>ORDER ON DEMAND</h4>
-                    <p>You can order your FIT box on your need.Schedule online and cancel any time.</p>
+                    <p>You can <a href="<?= HTTP_ROOT . $url; ?>">order your FIT Box</a> on your need.Schedule online and cancel any time.</p>
                 </div>
             </div>
             <div class="col-md-3">

@@ -1,7 +1,7 @@
 <?php
 
 use Cake\ORM\TableRegistry;
-
+$action = $this->request->params['action'];
 if ($this->request->session()->read('PROFILE') == 'KIDS') {
     if ($this->request->session()->read('KID_ID')) {
         $kidsDetails = TableRegistry::get('kidsDetails');
@@ -69,6 +69,11 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                         </a>
                         </br>
                         <p>WE DO BEST FIT</p>
+                        <div class="footer-social">
+                            <a class="us-country" href="#">United States</a>
+                    <h3>Follow Us :</h3>
+                    <?php echo $this->cell('Chat::social_media');?>
+                </div> 
                 </div>
             </div>
             <div class="col-md-2">
@@ -76,9 +81,9 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                     <h3>About Us</h3>
                     <ul>
                         <!-- <a href="footer.ctp"></a> -->
-                        <li><a href="<?php echo HTTP_ROOT . 'who-we-are' ?>">Who we are</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'our-mission' ?>">Our mission</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'our-stylist'?>">Our stylist</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'who-we-are' ?>">Who We Are</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'our-mission' ?>">Our Mission</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'our-stylist'?>">Our Stylist</a></li>
                         <!-- <li><a href="<?php echo HTTP_ROOT . 'news' ?>">News</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'investors' ?>">Investors</a></li> -->
                         <li><a href="<?php echo HTTP_ROOT . 'executive-team' ?>">Executive Team</a></li>
@@ -89,9 +94,20 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                 <div class="footer-links">
                     <h3>Service</h3>
                     <ul>
-                        <li><a href="<?php echo HTTP_ROOT . 'men' ?>">Men</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'women' ?>">Women</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'kids' ?>">Kids</a></li>
+                        <?php if($action == "women" || $action == "plusSize" || $action == "maternity" || $action == "petite" || $action == "womenJeans" || $action == "womenBusiness"){?>
+                            <li><a href="<?php echo HTTP_ROOT . 'women/plus-size' ?>">Plus size Fits</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'women/maternity' ?>">Maternity Fits</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'women/petite' ?>">Petite</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'women/women-jeans' ?>">Women Jeans</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'women/women-business' ?>">Women Business Fits</a></li>
+                        <?php } else if($action == "men" || $action == "bigTall" || $action == "styleGuide") {?>
+                            <li><a href="<?php echo HTTP_ROOT . 'men/big-tall' ?>">Big & Tall</a></li>
+                            <?php /* ?><li><a href="<?php echo HTTP_ROOT . 'men/style-guide' ?>">The Style Guide</a></li><?php */ ?>
+                        <?php }else{ ?>
+                            <li><a href="<?php echo HTTP_ROOT . 'men' ?>">Men</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'women' ?>">Women</a></li>
+                            <li><a href="<?php echo HTTP_ROOT . 'kids' ?>">Kids</a></li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>
@@ -99,15 +115,29 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                 <div class="footer-links">
                     <h3>The Company</h3>
                     <ul>
-                        <li><a href="<?php echo HTTP_ROOT . 'style-blog' ?>">Style Blog</a></li>                
+                        <li><a href="<?php echo HTTP_ROOT . 'style-blog' ?>">Style Blog</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'news' ?>">News</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'investors' ?>">Investors Relation</a></li>
                         <li><a href="<?php echo HTTP_ROOT . 'careers' ?>">Careers</a></li>
+<!--                         <li><a href="<?php echo HTTP_ROOT . 'feedback-review' ?>">Feedback & Reviews</a></li>
+                        
                         <li><a href="<?php echo HTTP_ROOT . 'feedback-review' ?>">Feedback & Reviews</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'feedback-review' ?>">Feedback & Reviews</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'feedback-review' ?>">Feedback & Reviews</a></li> -->
                         <?php /* ?><li><a href="<?php echo HTTP_ROOT . 'terms-conditions' ?>">Terms & Conditions</a></li><?php */ ?>
                     </ul>
                 </div>
             </div>
+            <div class="col-md-2">
+               <div class="footer-links">
+                    <h3>Recommended</h3>
+                    <ul>
+                        <li><a href="<?php echo HTTP_ROOT . 'how-it-works' ?>">How Drape Fit Works</a></li>                
+                        <li><a href="<?php echo HTTP_ROOT . 'box-pricing' ?>">FIT Box Pricing</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'personal-stylist' ?>">Personal Stylist</a></li>
+                    </ul>
+                </div>           
+            </div>   
             <div class="col-md-2">
                 <div class="footer-links">
                     <h3>Customer Care</h3>
@@ -122,12 +152,8 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="footer-social">
-                    <h3>Follow Us :</h3>
-                    <?php echo $this->cell('Chat::social_media');?>
-                </div>           
-            </div>         
+                  
         </div>
     </div>
 </section>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6931110.js"></script>

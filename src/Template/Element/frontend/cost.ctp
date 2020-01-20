@@ -6,14 +6,15 @@
                     <h2>HOW MUCH DOES FIT COST ?</h2>
                     <ul>
                         <li>
-                            Each Fit  box has a <strong>$20 styling fee</strong> is applied to your purchase and you’re only billed for what you keep. <strong>It’s Free Shipping!</strong> Prepaid return envelope included.
+                            Each FIT  Box has a <strong>$20 styling fee</strong> is applied to your purchase and you’re only billed for what you keep. <strong>It’s Free Shipping!</strong> Prepaid return envelope included.
                         </li>
                         <li>
                            Items in your box generally will cost depends as per you choose in your style profile.
                         </li>
                         <li>
-                            Receive a FIT box  monthly or quarterly. Choose your frequency . <strong>skip or cancel anytime.</strong>
+                            Receive a FIT Box  monthly or quarterly. Choose your frequency . <strong>skip or cancel anytime.</strong>
                         </li>
+                        <li>Will share profit on every quarter towards the products you consume.</li>
                     </ul>
                 </div>
             </div>
