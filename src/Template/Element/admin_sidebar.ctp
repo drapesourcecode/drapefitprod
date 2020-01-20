@@ -65,6 +65,25 @@ $paramAction = $this->request->params['action'];
                        
                     </ul>
                 </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && ($paramAction == 'addCareer' || $paramAction == 'viewCareer')) { ?> active <?php } ?>">
+                    <a href="javascript:;"><i class="fa  fa-user"></i><span>Career</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'addCareer') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/add_career"><i class="fa  fa-user"></i> Add  Career</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'viewCareer') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/view_career"><i class="fa  fa-eye"></i> View  Career</a></li>
+                    </ul>
+                </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && ($paramAction == 'blogCategory' || $paramAction == 'createBlog' || $paramAction == 'blogTag' )) { ?> active <?php } ?>">
+                    <a href="javascript:;"><i class="fa  fa-th"></i><span>Manage Blog</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'blogCategory') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/blog_category"><i class="fa  fa-chevron-right"></i> Category</a></li>
+                        
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'createBlog') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/create_blog"><i class="fa  fa-chevron-right"></i> Blog</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'blogTag') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/blog_tag"><i class="fa  fa-chevron-right"></i> Blog Tag</a></li>
+                    </ul>
+                </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'news') { ?> active <?php } ?>">
+                    <a href="<?php echo HTTP_ROOT ?>appadmins/news" ><i class="fa fa-newspaper-o"></i> <span>News</span></a>
+                </li>
             <?php } ?>
 
             <li><a style="color: red;" href="<?= h(HTTP_ROOT) ?>appadmins/logout"><i class="fa fa-key"></i> <span>Logout</span></a></li>
