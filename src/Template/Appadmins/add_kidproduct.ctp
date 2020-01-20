@@ -216,6 +216,8 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputFile">Image<span style="color: red;">*</span></label>
                                                             <?= $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => "form-control-file", 'label' => false, 'kl_virtual_keyboard_secure_input' => "on", 'required' => "required", 'data-error' => 'Please Browse  image', 'onchange' => "return validateImgExt('image')"]); ?>
+                                                              <div id="imagePreview"></div>
+
                                                             <div class="help-block with-errors"></div>
                                                             <p style="font-size: 12px;">Note: <span>For better resolution image size should be(1820x543px)</span>.</p>
                                                         </div>

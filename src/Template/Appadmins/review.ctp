@@ -1283,7 +1283,7 @@
                                         Are you a pregnant?                     
                                     </h3> 
                                     <div class="timeline-footer parent-box">
-                                        <a class="btn btn-primary btn-xs blue"><span class="<?php if (@$Womeninfo->pregnant == 1) { ?> active <?php } ?>">Yes</span><span class="<?php if (@$Womeninfo->pregnant == 0) { ?> active <?php } ?>">No</span></a> 
+                                        <a class="btn btn-primary btn-xs blue"><span class="<?php if (@$Womeninfo->pregnant == 1) { ?> active <?php } ?>">Yes</span><span style="margin-left: 3px !important;" class="<?php if (@$Womeninfo->pregnant == 0) { ?> active <?php } ?>">No</span></a> 
                                     </div>
                                 </div>
                                 <?php if(@$Womeninfo->pregnant == 1) {?>

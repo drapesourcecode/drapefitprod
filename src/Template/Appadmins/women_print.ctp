@@ -109,7 +109,7 @@
                 <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
                     <li style=" float: left; width: 19%;margin-right: 7px;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">Inverted Triangle</h4>
-                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 2) { ?> border: 1px solid #ff6c00; <?php } else { ?> border: 1px solid #ccc; <?php } ?>   text-align: center; position: relative;">
+                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 2) { ?> border: 2px solid #ff6c00; <?php } else { ?> border: 2px solid #ccc; <?php } ?>   text-align: center; position: relative;">
                             <?php if (@$Womeninfo->body_type == 2) { ?>
                                 <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"> <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
@@ -118,7 +118,7 @@
                     </li>
                     <li style=" float: left; width: 19%;margin-right: 7px;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">Triangle</h4>
-                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 3) { ?> border: 1px solid #ff6c00; <?php } else { ?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative;">
+                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 3) { ?> border: 2px solid #ff6c00; <?php } else { ?> border: 2px solid #ccc; <?php } ?> text-align: center; position: relative;">
                             <?php if (@$Womeninfo->body_type == 3) { ?>
                                 <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"> <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
@@ -126,7 +126,7 @@
                     </li>
                     <li style=" float: left; width: 19%;margin-right: 7px;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">Rectangle</h4>
-                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 1) { ?> border: 1px solid #ff6c00; <?php } else { ?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative;"><img style="width: 80px;" src="<?php echo HTTP_ROOT ?>images/rectangle.jpg" alt="">
+                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 1) { ?> border: 2px solid #ff6c00; <?php } else { ?> border:2px solid #ccc; <?php } ?> text-align: center; position: relative;"><img style="width: 80px;" src="<?php echo HTTP_ROOT ?>images/rectangle.jpg" alt="">
                             <?php if (@$Womeninfo->body_type == 1) { ?>
                                 <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"> <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
@@ -136,7 +136,7 @@
 
                     <li style=" float: left; width: 19%;margin-right: 7px;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">Hourglass</h4>
-                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 4) { ?> border: 1px solid #ff6c00; <?php } else { ?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative;"><img style="width: 80px;" src="<?php echo HTTP_ROOT ?>images/hourglass.jpg" alt="">
+                        <div style=" float: left; width: 100%; <?php if (@$Womeninfo->body_type == 4) { ?> border: 2px solid #ff6c00; <?php } else { ?> border: 2px solid #ccc; <?php } ?> text-align: center; position: relative;"><img style="width: 80px;" src="<?php echo HTTP_ROOT ?>images/hourglass.jpg" alt="">
                             <?php if (@$Womeninfo->body_type == 4) { ?>
                                 <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"> <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
@@ -144,7 +144,7 @@
                     </li>
                     <li style=" float: left; width: 19%;margin-right: 7px;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">Apple</h4>
-                        <div style=" float: left; width: 100%; text-align: center; position: relative; <?php if (@$Womeninfo->body_type == 5) { ?> border: 1px solid #ff6c00; <?php } else { ?> border: 1px solid #ccc; <?php } ?>">
+                        <div style=" float: left; width: 100%; text-align: center; position: relative; <?php if (@$Womeninfo->body_type == 5) { ?> border: 2px solid #ff6c00; <?php } else { ?> border: 2px solid #ccc; <?php } ?>">
                             <?php if (@$Womeninfo->body_type == 5) { ?>
                                 <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"> <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
@@ -747,7 +747,10 @@
                     <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
                         <li style=" float: left; width: 19%;margin-right: 7px;">
                             <div style=" float: left; width: 100%; <?php if (@$SizeChart->is_pregnant == 2) { ?> border: 2px solid #ff6c00;<?php } else {?> border: 1px solid #ccc; <?php } ?>  text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                                <?php if (@$SizeChart->is_pregnant == 2) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>  <?php } ?>
+                                <?php if (@$SizeChart->is_pregnant == 2) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;">
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span>  <?php } ?>
 
                                 <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>images/leady-belly4.png" alt=""></div>
                             <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;">Regular pants with an under-the-belly type</p>
@@ -756,7 +759,11 @@
                         <li style=" float: left; width: 19%;margin-right: 7px;">
 
             <div style=" float: left; width: 100%; <?php if (@$SizeChart->is_pregnant == 3) { ?> border: 2px solid #ff6c00;<?php } else {?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                                <?php if (@$SizeChart->is_pregnant == 3) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>  <?php } ?>
+                                <?php if (@$SizeChart->is_pregnant == 3) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+
+                                </span>  <?php } ?>
 
                                 <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>images/leady-belly3.png" alt=""></div>
                             <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;">All-around stretch to give light support</p>
@@ -764,14 +771,21 @@
                         
                         <li style=" float: left; width: 19%;margin-right: 7px;">
                             <div style=" float: left; width: 100%;<?php if (@$SizeChart->is_pregnant == 1) { ?> border: 2px solid #ff6c00;<?php } else {?>  border:1px solid #ccc; <?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                                <?php if (@$SizeChart->is_pregnant == 1) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>  <?php } ?>
+                                <?php if (@$SizeChart->is_pregnant == 1) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span>  <?php } ?>
 
                                 <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>images/leady-belly2.png" alt=""></div>
                             <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;">Elastic side panels</p>
                         </li>
                         <li style=" float: left; width: 19%;margin-right: 7px;">
-                            <div style=" float: left; width: 100%;<?php if (@$SizeChart->is_pregnant == 4) { ?> border: 2px solid #ff6c00;<?php } else {?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;"><img style="width: 100%;" src="<?php echo HTTP_ROOT ?>images/leady-belly1.png" alt="">
-                                <?php if (@$SizeChart->is_pregnant == 4) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>  <?php } ?>
+                            <div style=" float: left; width: 100%;<?php if (@$SizeChart->is_pregnant == 4) { ?> border: 2px solid #ff6c00;<?php } else {?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>images/leady-belly1.png" alt="">
+                                <?php if (@$SizeChart->is_pregnant == 4) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span>  <?php } ?>
                             </div>
                             <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;">Fits over bump for maximum support</p>
                         </li>
@@ -806,7 +820,10 @@
                     </div>
                 </div>
             </div>
-            <div style="float: left; width: 100%; margin: 50px 0 5%;">Page 4</div>
+            <?php if (@$Womeninfo->pregnant == 1) { ?>
+            <div style="float: left; width: 100%; margin: 50px 0 3%;">Page 4</div>
+            <?php } ?>
+            
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Style Inspiration</h3>
                 <p style="margin-top: 0;color: #8c8c8c;font-size: 15px;">Are you looking to incorporate more of the styles below into your wardrobe? Select the styles below that you inspire to look like or would like to explore.</p>
@@ -865,13 +882,18 @@
                     </li>
                 </ul>
             </div>
+            <?php if (@$Womeninfo->pregnant == 0) { ?>
+            <div style="float: left; width: 100%; margin: 50px 0 55%;">Page 4</div>
+            <?php } ?>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Please tell us the OutFit you prefer to wear. </h3>
                 <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
                     
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('1', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;"><?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('1', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> 
-                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
+                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;">
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit1.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -910,7 +932,10 @@
 
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px;<?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('2', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                            <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('2', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
+                            <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('2', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span> <?php } ?>
 
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit2.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -946,7 +971,10 @@
 
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px;  <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('3', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('3', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
+                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('3', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                        </span> <?php } ?>
 
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit3.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -981,7 +1009,10 @@
 
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('4', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('4', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
+                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('4', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                        </span> <?php } ?>
 
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit4.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -1016,7 +1047,10 @@
                     
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('3', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
-                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('5', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?><span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
+                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('5', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?><span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                        </span> <?php } ?>
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit5.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
                             <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
@@ -1053,7 +1087,10 @@
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('3', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
 
                             <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('6', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?>
-                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
+                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span> <?php } ?>
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit6.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
                             <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
@@ -1085,11 +1122,19 @@
                             </ul> 
                         </div>
                     </li>
-                    <div style="float: left; width: 100%; margin: 30px 0 5%; text-align: center;">Page 5</div>
+                    <?php if (@$Womeninfo->pregnant == 1) { ?>
+            <div style="float: left; width: 100%; margin: 30px 0 3%; text-align: center;">Page 5</div>
+            <?php } ?>
+            <?php if (@$Womeninfo->pregnant == 0) { ?>
+                    <div style="float: left; width: 100%; margin: 30px 0 48%; text-align: center;">Page 5</div>
+                    <?php } ?>
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('7', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('7', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?>
-                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
+                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span>
                             <?php } ?>
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit7.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -1128,7 +1173,10 @@
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('8', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
                             <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('8', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> 
-                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;"> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> 
+                                <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;"> 
+                                    <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                    <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt="">
+                                </span> 
                             <?php } ?>
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit8.jpg" alt=""></div>
                         <div style=" float: left; width: 100%;">
@@ -1983,8 +2031,9 @@
                     </ul>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 40px 0 34%;">Page 9</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
-                <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;"> Underwear &amp; Grooming </h3>
+                <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Please do double click to upload any images / design you want your stylist to work for you ?</h3>
                 <div style="float: left; width: 100%;">
                     <div style="display: inline-block;width: 27%;margin-right: 20px; text-align: center;">
                         <div style="width: 100%; overflow: hidden;">
@@ -2024,7 +2073,7 @@
                     </div>
                 </div>
             </div>
-            <div style="float: left; width: 100%; margin: 40px 0 20px;">Page 9</div>
+            
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Brand or store you prefer to shop ? </h3>
                 <ul style=" float: left; width:100%; margin: 0; padding: 0; list-style-type:  none;">
@@ -2142,6 +2191,7 @@
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/mens-brand-logo/landsend.png" alt=""> 
                         </div>
                     </li>
+                    <div style="float: left;width: 95%;margin: 40px 0 20%;text-align: center;">Page 10</div>
                     <li style="display: inline-block;width: 20%;margin: 10px 11px;vertical-align: top;position: relative;">
                         <div style="position: relative;<?php if (isset($menbrand) && in_array('jcrew', @$menbrand)) { ?>border: 2px solid #ff6c00;<?php } else { ?>  border: 1px solid #e0e0e0;<?php } ?> padding: 2px;display: inline-block;width: 100%;">
                             <?php if (isset($menbrand) && in_array('jcrew', @$menbrand)) { ?>  <span style="text-align: center; height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
@@ -2170,6 +2220,7 @@
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/mens-brand-logo/northface.png" alt="">
                         </div>
                     </li>
+
                     <li style="display: inline-block;width: 20%;margin: 10px 11px;vertical-align: top;position: relative;">
                         <div style="position: relative;<?php if (isset($menbrand) && in_array('hm', @$menbrand)) { ?>border: 2px solid #ff6c00;<?php } else { ?>  border: 1px solid #e0e0e0;<?php } ?> padding: 2px;display: inline-block;width: 100%;">
                             <?php if (isset($menbrand) && in_array('hm', @$menbrand)) { ?>  <span style="text-align: center; height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box;overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span> <?php } ?>
@@ -2256,7 +2307,7 @@
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Add additional comments</h3>
                 <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;"><?php echo @$Womenstyle->profile_note; ?></p>
             </div>
-            <div style="float: left; width: 100%; margin: 40px 0 20px;">Page 10</div>
+            <div style="float: left; width: 100%; margin: 40px 0 20px;">Page 11</div>
             <div class="pagebreak"> </div>
         </div>
     </page>

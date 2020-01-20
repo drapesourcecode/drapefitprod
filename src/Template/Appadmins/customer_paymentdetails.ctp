@@ -36,7 +36,7 @@
                                     <?php } else {?>
                                        <span style="color:red;">Not Paid</span>
                                     <?php } ?>
-                                    
+                                     
                                     </td>  
                                 </tr>
                                 <?php endforeach; ?>

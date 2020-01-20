@@ -80,6 +80,7 @@
                                 foreach ($userdetails as $pages):
 //                                     pj($pages);
                                     ?>
+                                <?php $emailpstatus = $this->Custom->emailperference($pages->user_id,$pages->kid_id);?>
 
                                     <tr>
                                         <?php if ($type != 3) { ?>
@@ -138,17 +139,23 @@
                                                     }
                                                     
                                                     
-                                                    ?> 
-<?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                    ?>
+                                                <?php if($emailpstatus=="1"){ ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php } else{ ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php }?>
                                                     <?php
                                                 } elseif (@$pages->profile_type == 1) {
                                                     ?>
                                                     <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-eye')), ['action' => 'review', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "view profile", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
                                                     <?php echo $this->Html->link($this->Html->tag('i', $mass_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?> 
-                                                 
-                                                  <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-
-                                                    <?php
+                                                
+                                                <?php if($emailpstatus=="1"){ ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>                                                
+                                                <?php } else{ ?>                                                
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php }
                                                 }
                                                 
                                                 ?>
@@ -195,8 +202,13 @@
 
                                                     <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-eye')), ['action' => 'kidProfile', $pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View Kid profile", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?> 
                                                     <?php echo $this->Html->link($this->Html->tag('i', $mass_kid_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewkidproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
-                                                     <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                <?php } ?>
+                                                    
+                                                    <?php if($emailpstatus=="1"){ ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled','target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                    <?php } else{?>
+                                                    
+                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php } } ?>
                                                     
 
                                             </td>
@@ -256,11 +268,16 @@
                                                     ?>
                                                     <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-eye')), ['action' => 'review', $pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "view profile", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
 
-                                                    <?php echo $this->Html->link($this->Html->tag('i', $mass_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?> 
+                                                    <?php echo $this->Html->link($this->Html->tag('i', $mass_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
+                                                
+                                                <?php if($emailpstatus=="1"){ ?>
+                                                <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php } else{?>
+                                                
                                                 <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
 
                                                     <?php
-                                                }
+                                                } }
                                                 ?>
                                                 
                                             </td>
@@ -281,13 +298,15 @@
 
 
                                                     <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-eye')), ['action' => 'kidProfile', $pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View Kid profile", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?> 
-                                                    <?php echo $this->Html->link($this->Html->tag('i', $mass_kid_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewkidproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>  
+                                                    <?php echo $this->Html->link($this->Html->tag('i', $mass_kid_product_count[$pages->id], array('class' => 'fa fa-plus')), ['action' => 'viewkidproductlist', @$pages->id], ['escape' => false, "data-placement" => "top", "data-hint" => "View product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
+                                                
+                                                <?php if($emailpstatus=="1"){ ?>
+                                                <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
+                                                <?php } else{?>
+                                                
                                                 <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
 
-                                                <?php } ?>
-                                                
-
-                                                
+                                                <?php } } ?>
                                             </td>
                                         <?php } ?>
                                     </tr>

@@ -445,7 +445,7 @@ page[size="A4"] {
                             <?php if (@$KidsSizeFit->kids_fit_challenge_shirt_torso_width == 'Too tight') { ?>
                                     <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
                                 <?php } ?>
-                            <span style="position: relative; z-index: 111;">Too short</span>
+                            <span style="position: relative; z-index: 111;">Too tight</span>
                         </span>
                             
                             <span style="<?php if (@$KidsSizeFit->kids_fit_challenge_shirt_torso_width == 'None') { ?>border: 1px solid #ff6c00;background: #ff6c00; <?php } else{?>border: 1px solid #ccc; <?php } ?>display: inline-block;padding: 10px; margin: 0 -1px; text-align: center;font-size: 15px; position: relative; overflow: hidden;">
@@ -492,7 +492,7 @@ page[size="A4"] {
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">PANT LEG LENGTH (INSEAM)</h4>
                         <div style=" float: left; width: 100%;text-align: left;">
                             <span style="<?php if (@$KidsSizeFit->kids_fit_challenge_pant_leg_length == 'Too short') { ?>border: 1px solid #ff6c00;background: #ff6c00; <?php } else{ ?>border: 1px solid #ccc; <?php } ?> display: inline-block; padding: 10px;text-align: center;border-top-left-radius: 3px;border-bottom-left-radius: 3px;font-size: 15px;  position: relative; overflow: hidden;">
-                                <span style="<?php if (@$KidsSizeFit->kids_fit_challenge_pant_leg_length == 'Too short') { ?>
+                                <?php if (@$KidsSizeFit->kids_fit_challenge_pant_leg_length == 'Too short') { ?>
                                     <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
                                 <?php } ?>
                             <span style="position: relative; z-index: 111;">Too short</span>
@@ -2154,7 +2154,7 @@ page[size="A4"] {
                             <?php if (@$KidsSizeFit->kids_fit_challenge_shirt_torso_width == 'Too tight') { ?>
                                     <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
                                 <?php } ?>
-                                <span style="position: relative; z-index: 111;">Too short</span>
+                                <span style="position: relative; z-index: 111;">Too tight</span>
                             </span>
                             
                             <span style="<?php if (@$KidsSizeFit->kids_fit_challenge_shirt_torso_width == 'None') { ?>border: 1px solid #ff6c00;background: #ff6c00; <?php } else{?>border: 1px solid #ccc; <?php } ?>display: inline-block;padding: 10px; margin: 0 -1px; text-align: center;font-size: 15px; position: relative; overflow: hidden;">

@@ -77,7 +77,7 @@
                                         "order": [[0, "desc"]]
                                     });
                                 </script>
-                                <th>First Name </th>
+                                <th>First Name <?php echo $emailpstatus = $this->Custom->emailperference($pages->user_id,$pages->kid_id); ?></th>
                                  <th>Last Name</th>
                                 <th>Rq Date</th> 
                                
@@ -164,20 +164,15 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php if($emailpstatus=="1"){ ?>
-                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } else{ ?>
-                                                    <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); }?>
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                     <?php } else { ?>
                                                         <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Receipt</i></a>
                                                         <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Catelog</i></a>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none;"><i class="fa P">Email</i></a>
-                                                        <?php } else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']);?>
-                                                        <?php }?>
+                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Email</i></a>
                                                     <?php } ?>
-                                                    
+                                                    <?php if($emailpstatus ==1){ ?>
+                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Email</i></a>
+                                                    <?php } ?>
 
                                                     <?php
                                                 } elseif (@$pages->profile_type == 1) {
@@ -188,21 +183,15 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php } else{?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php } ?>
                                                     <?php } else { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none;']); ?>
-                                                        <?php } else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); } ?>
-                                                        
-                                                        
-                                                    <?php } ?>                                                    
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
+                                                    <?php if($emailpstatus ==1){ ?>
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
                                                     <?php
                                                 }
                                                 ?>
@@ -248,21 +237,16 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'receipt_kid_print', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_kid_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } else{?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php }?>
                                                     <?php } else { ?> 
                                                         <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Receipt</i></a>
                                                         <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Catelog</i></a>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none;"><i class="fa P">Email</i></a>
-                                                        <?php } else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } } ?>
+                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Email</i></a>
+                                                    <?php } ?>
                                                         
-                                                    
+                                                    <?php if($emailpstatus ==1){ ?>
+                                                        <a href="javascript:void(0)" disabled="disabled" data-placement="top"  class="btn btn-info" style="padding: 0 12px!important;pointer-events: none"><i class="fa P">Email</i></a>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </td>
                                             <td> 
@@ -312,20 +296,15 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                <?php } else{?>
-                                                <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                <?php }?>
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                     <?php } else { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none;']); ?>
-                                                <?php } else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                    <?php } }?>
-                                                    
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
+                                                    <?php if($emailpstatus ==1){ ?>
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
                                                     <?php
                                                 } elseif ($pages->profile_type == 1) {
                                                     ?>
@@ -334,19 +313,15 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php if($emailpstatus=="1"){ ?>    
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } else {?>
-                                                            
                                                         <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } } else { ?>
+                                                    <?php } else { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'print_receipt', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_catelog', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top",'disabled'=>'disabled', 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none;']); } else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                    <?php } } ?>
-                                                    
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
+                                                    <?php if($emailpstatus ==1){ ?> 
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
+                                                    <?php } ?>
                                                     <?php
                                                 }
                                                 ?>
@@ -378,17 +353,11 @@
                                                     <?php if (@$pages->mail_status == 1) { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'receipt_kid_print', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_kid_catelog', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false,'disabled'=>'disabled', "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php } else{?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); ?>
-                                                        <?php } } else { ?>
+                                                    <?php } else { ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Receipt', array('class' => 'fa P')), ['action' => 'receipt_kid_print', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
                                                         <?= $this->Html->link($this->Html->tag('i', 'Catelog', array('class' => 'fa P')), ['action' => 'add_kid_catelog', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                        <?php if($emailpstatus=="1"){ ?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['disabled', 'escape' => false,'disabled'=>'disabled', "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
-                                                        <?php }else{?>
-                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;']); } ?>
+                                                        <?= $this->Html->link($this->Html->tag('i', 'Email', array('class' => 'fa P')), ['action' => 'add_kid_email', @$pages->id], ['disabled', 'escape' => false, "data-placement" => "top", 'target' => '_blank', 'class' => 'btn btn-info', 'style' => 'padding: 0 12px!important;pointer-events: none']); ?>
                                                     <?php } ?>
 
 

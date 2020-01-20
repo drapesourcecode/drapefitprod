@@ -16,6 +16,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Kid Name</th>
                                     <th>Email</th>
                                     <th>Date</th>
                                     <th>Status</th>
@@ -26,7 +27,7 @@
                                 <?php foreach ($AllUserList as $aduserlist): ?>
                                     <tr>
                                         <td><?php echo $this->Custom->customerName($aduserlist->user_id) ?></td>
-                                       
+                                        <td><?php echo $this->Custom->kidName($aduserlist->kid_id) ?></td>
                                         <td><?php echo $this->Custom->customerEmail($aduserlist->user_id) ?></td>
                                          <td><?php echo $aduserlist->applay_dt; ?></td>
                                         <td><?php 
